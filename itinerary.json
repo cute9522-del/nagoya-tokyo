@@ -1,0 +1,1411 @@
+{
+  "meta": {
+    "title": "名古屋×東京 8 天旅遊小工具",
+    "tripDates": {
+      "start": "2025-12-20",
+      "end": "2025-12-27"
+    },
+    "timezone": "Asia/Taipei",
+    "weatherProvider": "Open-Meteo (geocoding + current weather)"
+  },
+  "days": [
+    {
+      "date": "2025-12-20",
+      "dayTitle": "Day 1",
+      "baseLocation": "名古屋",
+      "cards": [
+        {
+          "type": "transport",
+          "time": "03:00",
+          "title": "市政府（自訂）",
+          "note": "出發前檢查：護照、充電、日幣少量。"
+        },
+        {
+          "type": "transport",
+          "time": "04:53",
+          "title": "TPE 桃園國際機場",
+          "note": "航班 CI154；建議先補水/輕食。",
+          "address": "Taoyuan International Airport"
+        },
+        {
+          "type": "transport",
+          "time": "11:05",
+          "title": "NGO 中部國際機場（新特麗亞）",
+          "note": "入境＋名鐵進市區；行李多預留 15 分。",
+          "address": "Chubu Centrair International Airport"
+        },
+        {
+          "type": "transport",
+          "time": "12:53",
+          "title": "名古屋車站",
+          "note": "轉乘樞紐；可先找置物櫃/寄放行李。",
+          "address": "Nagoya Station"
+        },
+        {
+          "type": "food",
+          "time": "13:25",
+          "title": "Coffee House Kako",
+          "note": "名古屋モーニング系咖啡店。",
+          "address": "Coffee House Kako, Nagoya",
+          "tags": [
+            "咖啡",
+            "補能量"
+          ],
+          "mustOrder": [
+            "吐司/紅豆奶油（視現場）"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "14:15",
+          "title": "三輪神社",
+          "note": "短停拍照、散步。",
+          "address": "Miwa Shrine, Nagoya",
+          "tags": [
+            "神社"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "14:51",
+          "title": "大須商店街",
+          "note": "逛街主線；體力低可縮短 45–60 分。",
+          "address": "Osu Shopping Street, Nagoya",
+          "tags": [
+            "逛街",
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "16:10",
+          "title": "榮（愛知）",
+          "note": "商圈移動點（地下街方便）。",
+          "address": "Sakae, Nagoya",
+          "tags": [
+            "商圈"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "16:24",
+          "title": "HARBS 本店",
+          "note": "必吃水果千層；尖峰可能排隊。",
+          "address": "HARBS Nagoya",
+          "tags": [
+            "必吃",
+            "甜點"
+          ],
+          "mustEat": [
+            "水果千層"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "17:02",
+          "title": "SKYLE",
+          "note": "百貨/藥妝補貨；與 PARCO 擇一也可。",
+          "address": "SKYLE Nagoya",
+          "tags": [
+            "購物",
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "18:18",
+          "title": "Nagoya PARCO",
+          "note": "潮牌/雜貨；與 SKYLE 擇一。",
+          "address": "Nagoya PARCO",
+          "tags": [
+            "購物",
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "19:33",
+          "title": "榮・森之地下街",
+          "note": "冷天好走；可順便買隔天零食。",
+          "address": "Sakae Chika, Nagoya",
+          "tags": [
+            "地下街"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "20:37",
+          "title": "唐吉訶德 榮本店",
+          "note": "必買：保暖貼/入浴劑/零食。",
+          "address": "Don Quijote Sakae, Nagoya",
+          "tags": [
+            "必買",
+            "補貨"
+          ],
+          "mustBuy": [
+            "保暖貼",
+            "入浴劑",
+            "零食"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "22:21",
+          "title": "Furaibo Sakae（元祖手羽先）",
+          "note": "名古屋炸雞翅名物。",
+          "address": "Furaibo Sakae, Nagoya",
+          "tags": [
+            "必吃",
+            "名物"
+          ],
+          "mustEat": [
+            "手羽先"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "23:24",
+          "title": "Gold Stay Nagoya Sakae（住宿）",
+          "note": "回房後先整理隔天隨身包。",
+          "address": "〒460-0008 愛知県名古屋市中区栄４丁目９−22",
+          "tags": [
+            "住宿"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "00:34",
+          "title": "日々是好日 新榮店",
+          "note": "宵夜（可刪；隔天早起）。",
+          "address": "日々是好日 新榮店, Nagoya",
+          "tags": [
+            "可刪",
+            "宵夜"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2025-12-21",
+      "dayTitle": "Day 2",
+      "baseLocation": "白川鄉",
+      "cards": [
+        {
+          "type": "transport",
+          "time": "06:00",
+          "title": "Gold Stay Nagoya Sakae（出發）",
+          "note": "一日團日：保暖、現金、小水。",
+          "address": "〒460-0008 愛知県名古屋市中区栄４丁目９−22",
+          "tags": [
+            "早出發"
+          ]
+        },
+        {
+          "type": "transport",
+          "time": "07:45",
+          "title": "名古屋車站",
+          "note": "集合/上車。",
+          "address": "Nagoya Station"
+        },
+        {
+          "type": "transport",
+          "time": "07:51",
+          "title": "VIP Liner（名古屋）",
+          "note": "一日團交通；提早 10–15 分到。",
+          "address": "Nagoya Station",
+          "tags": [
+            "團體集合"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "10:32",
+          "title": "飛驒老街（高山）",
+          "note": "老街散步拍照。",
+          "address": "Takayama Old Town",
+          "tags": [
+            "老街"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "10:38",
+          "title": "小瀨德魚店",
+          "note": "小吃/伴手禮（視現場）。",
+          "address": "小瀨德魚店 Takayama",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "11:40",
+          "title": "宮川朝市",
+          "note": "快速逛；現金友善。",
+          "address": "Miyagawa Morning Market, Takayama",
+          "tags": [
+            "市集"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "11:56",
+          "title": "Andersen",
+          "note": "麵包/補給。",
+          "address": "Andersen Takayama",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "13:00",
+          "title": "高山老街主線",
+          "note": "逛街＋拍照。",
+          "address": "Takayama Old Town",
+          "tags": [
+            "主線"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "13:03",
+          "title": "飛驒牛壽司專賣店",
+          "note": "不排隊才買（擇一）。",
+          "address": "Hida beef sushi Takayama",
+          "tags": [
+            "擇一",
+            "建議"
+          ],
+          "mustEat": [
+            "飛驒牛握壽司"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "13:19",
+          "title": "高山古建築群",
+          "note": "沿路順走。",
+          "address": "Takayama",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "13:28",
+          "title": "Takayama Rinseido",
+          "note": "小店/伴手禮（彈性）。",
+          "address": "Takayama Rinseido",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "transport",
+          "time": "15:29",
+          "title": "Seseragi Park Parking Lot",
+          "note": "白川鄉停車場集合點。",
+          "address": "Seseragi Park Parking Lot, Shirakawa",
+          "tags": [
+            "集合點"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "15:50",
+          "title": "天守閣展望台",
+          "note": "拍全景；視天氣與時間。",
+          "address": "Shiroyama Viewpoint Shirakawa-go",
+          "tags": [
+            "必看",
+            "爬坡"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "17:13",
+          "title": "白川鄉 布丁的家",
+          "note": "必吃；排隊>10分放棄。",
+          "address": "白川-go Pudding",
+          "tags": [
+            "必吃"
+          ],
+          "mustEat": [
+            "白川鄉布丁"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "17:30",
+          "title": "Yuinosato 可樂餅",
+          "note": "備選（不排隊才買）。",
+          "address": "Yuinosato croquette Shirakawa",
+          "tags": [
+            "備選",
+            "擇一"
+          ],
+          "mustEat": [
+            "可樂餅"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "17:34",
+          "title": "相逢橋",
+          "note": "經典拍照點。",
+          "address": "Deai Bridge, Shirakawa-go",
+          "tags": [
+            "必拍"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "17:51",
+          "title": "白川鄉合掌造聚落（主區）",
+          "note": "拍照主線：合掌屋＋河畔角度。",
+          "address": "Shirakawa-go",
+          "tags": [
+            "主線",
+            "拍照"
+          ]
+        },
+        {
+          "type": "transport",
+          "time": "18:14",
+          "title": "Seseragi Park Parking Lot（返程集合）",
+          "note": "準時回集合。",
+          "address": "Seseragi Park Parking Lot, Shirakawa",
+          "tags": [
+            "集合點",
+            "固定"
+          ]
+        },
+        {
+          "type": "transport",
+          "time": "20:37",
+          "title": "名古屋車站（抵達）",
+          "note": "一日團結束。",
+          "address": "Nagoya Station",
+          "tags": [
+            "固定"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "21:05",
+          "title": "綠洲21",
+          "note": "夜景散步（彈性）。",
+          "address": "Oasis 21, Nagoya",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "22:20",
+          "title": "麵家獅子丸",
+          "note": "回程日收尾拉麵。",
+          "address": "Menya Shishimaru, Nagoya",
+          "tags": [
+            "建議"
+          ],
+          "mustEat": [
+            "拉麵"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "23:32",
+          "title": "Gold Stay Nagoya Sakae（回住宿）",
+          "note": "早睡備戰隔天吉卜力日。",
+          "address": "〒460-0008 愛知県名古屋市中区栄４丁目９−22",
+          "tags": [
+            "住宿",
+            "早睡"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2025-12-22",
+      "dayTitle": "Day 3",
+      "baseLocation": "吉卜力公園",
+      "cards": [
+        {
+          "type": "transport",
+          "time": "06:00",
+          "title": "Gold Stay Nagoya Sakae（出發）",
+          "note": "先逛展區再買；購物排隊會吃時間。",
+          "address": "〒460-0008 愛知県名古屋市中区栄４丁目９−22",
+          "tags": [
+            "早出發"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "08:12",
+          "title": "魔女之谷 (Valley of Witches)",
+          "note": "上午主區。",
+          "address": "Ghibli Park Valley of Witches",
+          "tags": [
+            "必看"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "09:36",
+          "title": "Guchokipanya Bakery",
+          "note": "麵包補給（視排隊）。",
+          "address": "Guchokipanya Bakery",
+          "tags": [
+            "可刪"
+          ],
+          "mustBuy": [
+            "麵包/限定點心"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "09:38",
+          "title": "13人的魔女團 紀念品商店",
+          "note": "購物排隊風險。",
+          "address": "Ghibli Park shop",
+          "tags": [
+            "購物",
+            "風險"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "10:11",
+          "title": "霍爾的移動城堡",
+          "note": "必拍地標。",
+          "address": "Howl's Moving Castle Ghibli Park",
+          "tags": [
+            "必拍"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "10:28",
+          "title": "Okino Residence Site",
+          "note": "短停。",
+          "address": "Okino Residence Site",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "10:40",
+          "title": "魔女之家",
+          "note": "室內參觀。",
+          "address": "Witch's House",
+          "tags": [
+            "建議"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "10:51",
+          "title": "Hatter’s Millinery",
+          "note": "拍照點。",
+          "address": "Hatter's Millinery",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "11:22",
+          "title": "Hot Tin Roof（熱狗攤）",
+          "note": "快速補能量。",
+          "address": "Hot Tin Roof",
+          "tags": [
+            "可刪"
+          ],
+          "mustEat": [
+            "熱狗/飲品"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "11:39",
+          "title": "Mononoke Village",
+          "note": "必看。",
+          "address": "Mononoke Village",
+          "tags": [
+            "必看"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "12:09",
+          "title": "Dondoko-Dokoro",
+          "note": "彈性。",
+          "address": "Dondoko-Dokoro",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "12:23",
+          "title": "Dondoko Forest",
+          "note": "彈性。",
+          "address": "Dondoko Forest",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "12:38",
+          "title": "サツキとメイの家",
+          "note": "必看；控時。",
+          "address": "Satsuki and Mei's House",
+          "tags": [
+            "必看",
+            "風險"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "13:08",
+          "title": "青春之丘",
+          "note": "轉場。",
+          "address": "Hill of Youth",
+          "tags": [
+            "建議"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "13:29",
+          "title": "地球屋",
+          "note": "拍照點。",
+          "address": "The Antique Shop Ghibli Park",
+          "tags": [
+            "建議"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "14:13",
+          "title": "吉卜力大倉庫",
+          "note": "下午重點；先逛展再買。",
+          "address": "Ghibli's Grand Warehouse",
+          "tags": [
+            "必看",
+            "風險"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "16:14",
+          "title": "Milk Stand SiberiAn",
+          "note": "甜點/飲品。",
+          "address": "Milk Stand SiberiAn",
+          "tags": [
+            "建議"
+          ],
+          "mustEat": [
+            "西伯利亞蛋糕/飲品"
+          ]
+        },
+        {
+          "type": "transport",
+          "time": "17:39",
+          "title": "榮（愛知）",
+          "note": "返市區。",
+          "address": "Sakae, Nagoya"
+        },
+        {
+          "type": "food",
+          "time": "18:55",
+          "title": "熱田蓬萊軒（松坂屋店）",
+          "note": "名物鰻魚飯；可能排隊。",
+          "address": "Atsuta Horaiken Matsuzakaya",
+          "tags": [
+            "名物",
+            "風險"
+          ],
+          "mustEat": [
+            "鰻魚飯三吃"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "20:08",
+          "title": "Gold Stay Nagoya Sakae（回住宿）",
+          "note": "整理行李：隔天移動東京。",
+          "address": "〒460-0008 愛知県名古屋市中区栄４丁目９−22",
+          "tags": [
+            "住宿",
+            "整理行李"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2025-12-23",
+      "dayTitle": "Day 4",
+      "baseLocation": "東京",
+      "cards": [
+        {
+          "type": "spot",
+          "time": "08:45",
+          "title": "Gold Stay Nagoya Sakae（出發）",
+          "note": "退房檢查：充電線、轉接頭、護照。",
+          "address": "〒460-0008 愛知県名古屋市中区栄４丁目９−22",
+          "tags": [
+            "退房"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "09:00",
+          "title": "Kato Coffee Sakae",
+          "note": "早咖啡。",
+          "address": "Kato Coffee Sakae",
+          "tags": [
+            "咖啡"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "09:52",
+          "title": "名古屋城",
+          "note": "室內本丸御殿優先。",
+          "address": "Nagoya Castle",
+          "tags": [
+            "必看"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "11:30",
+          "title": "金鯱橫丁",
+          "note": "小吃/伴手禮。",
+          "address": "Kinshachi Yokocho",
+          "tags": [
+            "伴手禮"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "12:01",
+          "title": "矢場とん（金シャチ橫丁）",
+          "note": "味噌豬排名物。",
+          "address": "Yabaton Kinshachi",
+          "tags": [
+            "必吃"
+          ],
+          "mustEat": [
+            "味噌豬排"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "13:32",
+          "title": "熱田神宮",
+          "note": "散步。",
+          "address": "Atsuta Jingu",
+          "tags": [
+            "神社"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "15:17",
+          "title": "えびせんべいの里 あつたnagAya店",
+          "note": "蝦餅補貨。",
+          "address": "えびせんべいの里 あつたnagAya店",
+          "tags": [
+            "必買"
+          ],
+          "mustBuy": [
+            "蝦餅綜合包"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "16:05",
+          "title": "回飯店取行李",
+          "note": "緩衝時間。",
+          "address": "〒460-0008 愛知県名古屋市中区栄４丁目９−22",
+          "tags": [
+            "緩衝"
+          ]
+        },
+        {
+          "type": "transport",
+          "time": "16:50",
+          "title": "名古屋車站（新幹線）",
+          "note": "提前 20–30 分到月台。",
+          "address": "Nagoya Station",
+          "tags": [
+            "風險"
+          ]
+        },
+        {
+          "type": "transport",
+          "time": "18:45",
+          "title": "東京車站",
+          "note": "到站轉乘。",
+          "address": "Tokyo Station"
+        },
+        {
+          "type": "food",
+          "time": "19:00",
+          "title": "Kirby Cafe Petit（東京站）",
+          "note": "人多可外帶。",
+          "address": "Kirby Cafe Petit Tokyo Station",
+          "tags": [
+            "可愛系"
+          ],
+          "mustEat": [
+            "造型甜點/飲品"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "20:03",
+          "title": "東京拉麵街",
+          "note": "晚餐備案。",
+          "address": "Tokyo Ramen Street",
+          "tags": [
+            "備案"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "21:19",
+          "title": "OMO5 東京大塚（入住）",
+          "note": "今晚以休息為主。",
+          "address": "〒170-0004 東京都豊島区北大塚２丁目２６−1",
+          "tags": [
+            "住宿",
+            "早睡"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "21:51",
+          "title": "Yoshiya saine",
+          "note": "彈性。",
+          "address": "Yoshiya saine",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "22:24",
+          "title": "My Basket 大塚站北",
+          "note": "補給。",
+          "address": "My Basket Otsukaeki North",
+          "tags": [
+            "補給"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "22:41",
+          "title": "回 OMO5 東京大塚",
+          "note": "收尾。",
+          "address": "〒170-0004 東京都豊島区北大塚２丁目２６−1",
+          "tags": [
+            "住宿"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2025-12-24",
+      "dayTitle": "Day 5",
+      "baseLocation": "東京（新宿/三鷹）",
+      "cards": [
+        {
+          "type": "spot",
+          "time": "08:00",
+          "title": "OMO5 東京大塚（出發）",
+          "note": "小包出門；美術館時間控管。",
+          "address": "〒170-0004 東京都豊島区北大塚２丁目２６−1",
+          "tags": [
+            "住宿"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "09:02",
+          "title": "W COFFEE",
+          "note": "早咖啡。",
+          "address": "W COFFEE Tokyo",
+          "tags": [
+            "咖啡"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "10:42",
+          "title": "三鷹之森吉卜力美術館",
+          "note": "入館時間/不可拍照區多；先短片再特展。",
+          "address": "Ghibli Museum, Mitaka",
+          "tags": [
+            "必看",
+            "風險"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "12:13",
+          "title": "新宿區",
+          "note": "轉場。",
+          "address": "Shinjuku, Tokyo"
+        },
+        {
+          "type": "food",
+          "time": "13:33",
+          "title": "Nara Seimen",
+          "note": "拉麵/沾麵。",
+          "address": "Nara Seimen Shinjuku",
+          "tags": [
+            "建議"
+          ],
+          "mustEat": [
+            "沾麵/拉麵"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "14:50",
+          "title": "HARE ルミネエスト",
+          "note": "購物（設定時間上限）。",
+          "address": "LUMINE EST Shinjuku",
+          "tags": [
+            "購物",
+            "可刪"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "16:13",
+          "title": "Kenyan Shibuya",
+          "note": "下午茶（可刪）。",
+          "address": "Kenyan Shibuya",
+          "tags": [
+            "可刪"
+          ],
+          "mustEat": [
+            "起司蛋糕（視現場）"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "17:51",
+          "title": "回 OMO5 東京大塚",
+          "note": "晚間休息/整理。",
+          "address": "〒170-0004 東京都豊島区北大塚２丁目２６−1",
+          "tags": [
+            "住宿"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2025-12-25",
+      "dayTitle": "Day 6",
+      "baseLocation": "東京迪士尼海洋",
+      "cards": [
+        {
+          "type": "transport",
+          "time": "06:00",
+          "title": "OMO5 東京大塚（出發）",
+          "note": "體力高壓日：先定 1–2 主目標。",
+          "address": "〒170-0004 東京都豊島区北大塚２丁目２６−1",
+          "tags": [
+            "體力日",
+            "早出發"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "08:02",
+          "title": "東京迪士尼海洋",
+          "note": "排隊＋走路多。",
+          "address": "Tokyo DisneySea",
+          "tags": [
+            "高壓",
+            "風險"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "22:01",
+          "title": "回 OMO5 東京大塚",
+          "note": "回房立刻洗澡睡（不整理戰利品）。",
+          "address": "〒170-0004 東京都豊島区北大塚２丁目２６−1",
+          "tags": [
+            "住宿",
+            "早睡"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2025-12-26",
+      "dayTitle": "Day 7",
+      "baseLocation": "東京（銀座/日本橋/淺草/上野）",
+      "cards": [
+        {
+          "type": "spot",
+          "time": "08:00",
+          "title": "OMO5 東京大塚（出發）",
+          "note": "今天偏趕：甜點選 2–3 家；排隊就刪。",
+          "address": "〒170-0004 東京都豊島区北大塚２丁目２６−1",
+          "tags": [
+            "偏趕",
+            "風險"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "09:26",
+          "title": "No.4",
+          "note": "早餐/咖啡（可刪）。",
+          "address": "No.4 Tokyo",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "10:46",
+          "title": "bills Ginza",
+          "note": "早到減少排隊。",
+          "address": "bills Ginza",
+          "tags": [
+            "必吃",
+            "風險"
+          ],
+          "mustEat": [
+            "Ricotta Hotcakes"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "11:50",
+          "title": "noix de beurre（銀座三越）",
+          "note": "伴手禮。",
+          "address": "noix de beurre Ginza Mitsukoshi",
+          "tags": [
+            "必買"
+          ],
+          "mustBuy": [
+            "奶油費南雪"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "12:14",
+          "title": "PUDDING LAB",
+          "note": "與大福擇一。",
+          "address": "PUDDING LAB Tokyo",
+          "tags": [
+            "擇一",
+            "可刪"
+          ],
+          "mustEat": [
+            "布丁"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "12:38",
+          "title": "弁才天 水果大福（GINZA SIX）",
+          "note": "與布丁擇一。",
+          "address": "Benitaito Ginza Six",
+          "tags": [
+            "擇一"
+          ],
+          "mustEat": [
+            "水果大福"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "13:08",
+          "title": "五代目 花山烏冬 銀座店",
+          "note": "鹹食緩衝。",
+          "address": "Hanayama Udon Ginza",
+          "tags": [
+            "建議"
+          ],
+          "mustEat": [
+            "寬麵烏龍麵"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "14:13",
+          "title": "銀座（散步）",
+          "note": "以『吃完就走』為主。",
+          "address": "Ginza, Tokyo",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "15:30",
+          "title": "BONGEN COFFEE（日本橋）",
+          "note": "排隊就刪。",
+          "address": "BONGEN COFFEE Nihonbashi",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "16:14",
+          "title": "Ginza Karen",
+          "note": "拍照/小逛（可刪）。",
+          "address": "Ginza Karen",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "17:05",
+          "title": "淺草",
+          "note": "雷門→仲見世→淺草寺。",
+          "address": "Asakusa, Tokyo",
+          "tags": [
+            "必看",
+            "風險"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "18:17",
+          "title": "Milk no Ki",
+          "note": "可刪。",
+          "address": "Milk no Ki Asakusa",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "18:57",
+          "title": "上野阿美橫町",
+          "note": "晚間氣氛。",
+          "address": "Ameya-Yokocho, Ueno",
+          "tags": [
+            "氣氛"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "20:26",
+          "title": "回 OMO5 東京大塚",
+          "note": "今晚不要撐，直接休息。",
+          "address": "〒170-0004 東京都豊島区北大塚２丁目２６−1",
+          "tags": [
+            "住宿",
+            "早睡"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2025-12-27",
+      "dayTitle": "Day 8",
+      "baseLocation": "川越 / 成田",
+      "cards": [
+        {
+          "type": "transport",
+          "time": "07:00",
+          "title": "OMO5 東京大塚（出發）",
+          "note": "回國日：16:30 後收心；成田預留 2.5–3 小時。",
+          "address": "〒170-0004 東京都豊島区北大塚２丁目２６−1",
+          "tags": [
+            "回國日",
+            "風險"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "08:17",
+          "title": "東武ツーリストインフォメーションセンター",
+          "note": "集合/資訊點（可刪）。",
+          "address": "Tobu Tourist Information Center",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "09:22",
+          "title": "Soup Stock Tokyo",
+          "note": "早餐（快、暖）。",
+          "address": "Soup Stock Tokyo",
+          "tags": [
+            "建議"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "11:32",
+          "title": "川越冰川神社",
+          "note": "主線必看。",
+          "address": "Kawagoe Hikawa Shrine",
+          "tags": [
+            "必看"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "12:32",
+          "title": "喜多院",
+          "note": "必看。",
+          "address": "Kitain Temple Kawagoe",
+          "tags": [
+            "必看"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "12:52",
+          "title": "Chiikawa Mogumogu Hompo",
+          "note": "購物（可刪）。",
+          "address": "Chiikawa Mogumogu Hompo Kawagoe",
+          "tags": [
+            "購物",
+            "可刪"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "13:55",
+          "title": "Arai Buhei Shoten",
+          "note": "午餐。",
+          "address": "Arai Buhei Shoten Kawagoe",
+          "tags": [
+            "建議"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "14:06",
+          "title": "Miffy Kitchen & Bakery Kawagoe",
+          "note": "拍照＋外帶。",
+          "address": "Miffy Kitchen & Bakery Kawagoe",
+          "tags": [
+            "可愛系",
+            "必買"
+          ],
+          "mustBuy": [
+            "造型麵包"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "14:07",
+          "title": "藥師神社",
+          "note": "短停（可刪）。",
+          "address": "Yakushi Shrine Kawagoe",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "14:39",
+          "title": "時之鐘",
+          "note": "地標必拍。",
+          "address": "Toki no Kane Kawagoe",
+          "tags": [
+            "必拍"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "14:50",
+          "title": "星巴克 川越時鐘小路店",
+          "note": "休息（可刪）。",
+          "address": "Starbucks Kawagoe Toki no Kane",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "15:12",
+          "title": "小江戶川越一番街商店街",
+          "note": "主線逛街/伴手禮。",
+          "address": "Kawagoe Ichibangai",
+          "tags": [
+            "主線",
+            "伴手禮"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "15:25",
+          "title": "川越布丁",
+          "note": "與鰻魚飯擇一；排隊就刪。",
+          "address": "Kawagoe Pudding",
+          "tags": [
+            "擇一",
+            "可刪"
+          ],
+          "mustEat": [
+            "布丁"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "15:38",
+          "title": "小川菊（鰻魚飯）",
+          "note": "與布丁擇一；排隊>30分放棄。",
+          "address": "Ogakiku Kawagoe",
+          "tags": [
+            "擇一",
+            "風險"
+          ],
+          "mustEat": [
+            "鰻魚飯"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "16:39",
+          "title": "大正浪漫夢通",
+          "note": "拍照收尾（可刪）。",
+          "address": "Taisho Roman Yume-dori",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "16:53",
+          "title": "蓮馨寺",
+          "note": "可刪。",
+          "address": "Renkeiji Temple",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "spot",
+          "time": "17:15",
+          "title": "川越 熊野神社",
+          "note": "可刪。",
+          "address": "Kawagoe Kumano Shrine",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "food",
+          "time": "18:41",
+          "title": "RANMEISYA SWEETS FACTORY",
+          "note": "最後甜點（看時間）。",
+          "address": "RANMEISYA SWEETS FACTORY",
+          "tags": [
+            "可刪"
+          ]
+        },
+        {
+          "type": "transport",
+          "time": "20:27",
+          "title": "NRT 成田國際機場",
+          "note": "回程 BR195；先安檢再逛免稅。",
+          "address": "Narita International Airport",
+          "tags": [
+            "風險"
+          ]
+        },
+        {
+          "type": "transport",
+          "time": "23:25",
+          "title": "TPE 桃園國際機場（抵達）",
+          "note": "返台。",
+          "address": "Taoyuan International Airport"
+        }
+      ]
+    }
+  ],
+  "flights": [
+    {
+      "segment": "去程",
+      "flightNo": "CI154",
+      "date": "2025-12-20",
+      "from": "TPE",
+      "to": "NGO",
+      "dep": "04:53",
+      "arr": "11:05",
+      "pnr": ""
+    },
+    {
+      "segment": "回程",
+      "flightNo": "BR195",
+      "date": "2025-12-27",
+      "from": "NRT",
+      "to": "TPE",
+      "dep": "20:27",
+      "arr": "23:25",
+      "pnr": ""
+    }
+  ],
+  "lodging": [
+    {
+      "city": "名古屋",
+      "name": "Gold Stay Nagoya Sakae ゴールドステイ名古屋 栄",
+      "address": "〒460-0008 愛知県名古屋市中区栄４丁目９−22",
+      "phone": "",
+      "bookingCode": ""
+    },
+    {
+      "city": "東京",
+      "name": "OMO5 東京大塚 by 星野集團 OMO5東京大塚 by 星野リゾート",
+      "address": "〒170-0004 東京都豊島区北大塚２丁目２６−1",
+      "phone": "",
+      "bookingCode": ""
+    }
+  ],
+  "emergency": [
+    {
+      "label": "日本緊急電話",
+      "value": "110（警察） / 119（消防・救急）"
+    },
+    {
+      "label": "台灣外交部緊急聯絡中心",
+      "value": "+886-800-085-095"
+    },
+    {
+      "label": "旅平險理賠專線",
+      "value": "（自行填入）"
+    },
+    {
+      "label": "信用卡掛失",
+      "value": "（自行填入）"
+    }
+  ],
+  "budget": {
+    "categories": [
+      "交通",
+      "餐飲",
+      "住宿",
+      "門票",
+      "購物",
+      "其他"
+    ],
+    "items": []
+  }
+}
