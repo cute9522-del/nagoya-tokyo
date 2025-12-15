@@ -8,3 +8,4 @@
 - 天氣使用 Open-Meteo（免 Key），需連網
 - 導航按鈕使用 Google Maps（Search/Dir）
 - 若要補充：PNR、訂房代號、電話、緊急聯絡，可直接改 itinerary.json
+
