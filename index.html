@@ -112,6 +112,46 @@ body{margin:0; font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "S
   backdrop-filter: blur(10px);}
 .modalActions{display:flex; gap: 8px; flex-wrap:wrap;}
 .modalActions .btn{flex: 1 1 120px;}
+
+.weatherRow{
+  margin-top:10px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.wxPill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.06);
+  background: rgba(255,255,255,.32);
+  font-size:12px;
+  color: var(--text2);
+}
+.wxPill strong{color: var(--text);}
+.wxTiny{font-size:11px; color: var(--muted);}
+.wxBtn{
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.08);
+  background: rgba(255,255,255,.22);
+  font-size:12px;
+}
+
+.gallery{margin-top:10px; display:flex; gap:10px; overflow:auto; padding-bottom:6px; -webkit-overflow-scrolling:touch;}
+.gImg{height:120px; border-radius:14px; border:1px solid rgba(0,0,0,.06); background:rgba(255,255,255,.22); object-fit:cover; flex:0 0 auto; max-width:70vw;}
+.coverHero{position:relative; overflow:hidden; border-radius: 18px; border:1px solid rgba(0,0,0,.06); background: rgba(255,255,255,.18); box-shadow: var(--shadow);}
+.coverHero img{width:100%; height: 220px; object-fit:cover; display:block;}
+.coverOverlay{position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:14px; background: linear-gradient(to top, rgba(0,0,0,.36), rgba(0,0,0,.0) 60%);}
+.coverOverlay .ct{color: rgba(255,255,255,.96); font-weight:700; font-size:18px;}
+.coverOverlay .cs{color: rgba(255,255,255,.86); font-size:12px; margin-top:6px;}
+.dayJumpRow{margin-top:10px; display:flex; gap:8px; overflow:auto; padding-bottom:2px; -webkit-overflow-scrolling:touch;}
+.dayJump{white-space:nowrap; border:1px solid rgba(0,0,0,.08); background: rgba(255,255,255,.22); border-radius:999px; padding:8px 10px; font-size:12px; color: var(--text2);}
+.dayJump.active{background: rgba(255,255,255,.38); color: var(--text); font-weight:650;}
+
 </style>
 </head>
 <body>
@@ -145,15 +185,109 @@ const TYPE_LABEL = {
   flight:"航班", train:"交通", bus:"交通", metro:"交通", walk:"步行",
   hotel:"住宿", food:"餐廳", cafe:"咖啡", spot:"景點", shopping:"購物", view:"景觀", area:"區域"
 };
-let DATA=null, ACTIVE_TAB="itinerary", ACTIVE_DAY=1, ACTIVE_ESS="flights", QUERY="";
+let DATA=null, ACTIVE_TAB="catalog", ACTIVE_DAY=1, ACTIVE_ESS="flights", QUERY="";
 let dragStartY=0, dragCurrentY=0, dragging=false;
 
 function el(html){const t=document.createElement("template"); t.innerHTML=html.trim(); return t.content.firstElementChild;}
+function resolveUrl(path){ try{ return new URL(path, window.location.href).toString(); }catch(e){ return path; } }
+function resolveImg(path){
+  const v = DATA?.images?.version ? `?v=${encodeURIComponent(DATA.images.version)}` : "";
+  return resolveUrl((path||"") + v);
+}
+
 function safe(s){return (s??"").toString();}
 function makeGoogleMapsNav(name){const q=encodeURIComponent(name); return `https://www.google.com/maps/search/?api=1&query=${q}`; }
 function makeSearchOfficial(name){const q=encodeURIComponent(name + " 公式サイト"); return `https://www.google.com/search?q=${q}`; }
 function typeLineColor(type){return TYPE_COLORS[type] || "rgba(120,120,120,.70)"; }
 function typeLabel(type){return TYPE_LABEL[type] || "資訊";}
+
+/* Weather (Open-Meteo, no API key) */
+const WX_CACHE_MIN = 20; // minutes
+const WX_LOC = {
+  nagoya: {name:"名古屋", lat:35.1815, lon:136.9066},
+  tokyo: {name:"東京", lat:35.6762, lon:139.6503},
+  takayama: {name:"高山 / 白川鄉", lat:36.1461, lon:137.2522},
+  kawagoe: {name:"川越", lat:35.9251, lon:139.4858},
+};
+function wxKey(lat, lon){ return `wx_${lat.toFixed(4)}_${lon.toFixed(4)}`; }
+function wxPickLocation(day){
+  const city = (day.city||"").toLowerCase();
+  if (city.includes("takayama") || city.includes("shirakawa")) return WX_LOC.takayama;
+  if (city.includes("nagoya")) return WX_LOC.nagoya;
+  if (day.title?.includes("川越")) return WX_LOC.kawagoe;
+  if (city.includes("tokyo") || city.includes("nrt")) return WX_LOC.tokyo;
+  return WX_LOC.tokyo;
+}
+function wxIconFromCode(code){
+  // WMO weather interpretation codes (Open-Meteo)
+  if(code===0) return "☀️";
+  if([1,2].includes(code)) return "🌤";
+  if(code===3) return "☁️";
+  if([45,48].includes(code)) return "🌫";
+  if([51,53,55,56,57].includes(code)) return "🌦";
+  if([61,63,65,66,67].includes(code)) return "🌧";
+  if([71,73,75,77,85,86].includes(code)) return "❄️";
+  if([80,81,82].includes(code)) return "🌧";
+  if([95,96,99].includes(code)) return "⛈";
+  return "🌡";
+}
+function fmtTime(iso){
+  try{
+    const d=new Date(iso);
+    return d.toLocaleTimeString("zh-Hant-TW",{hour:"2-digit", minute:"2-digit"});
+  }catch{ return ""; }
+}
+async function fetchWeather(loc){
+  const cacheK = wxKey(loc.lat, loc.lon);
+  try{
+    const cached = JSON.parse(localStorage.getItem(cacheK)||"null");
+    if(cached?.ts && (Date.now()-cached.ts) < WX_CACHE_MIN*60*1000) return cached.data;
+  }catch{}
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&current=temperature_2m,weather_code,wind_speed_10m&timezone=Asia%2FTokyo`;
+  const res = await fetch(url, {cache:"no-store"});
+  if(!res.ok) throw new Error("weather_http_"+res.status);
+  const j = await res.json();
+  const data = {
+    temp: j.current?.temperature_2m,
+    code: j.current?.weather_code,
+    wind: j.current?.wind_speed_10m,
+    time: j.current?.time
+  };
+  try{ localStorage.setItem(cacheK, JSON.stringify({ts:Date.now(), data})); }catch{}
+  return data;
+}
+async function renderWeather(day){
+  const row = document.getElementById("weatherRow");
+  if(!row) return;
+  const retryBtn = document.getElementById("wxRetry");
+  const meta = document.getElementById("wxMeta");
+  const pill = row.querySelector(".wxPill");
+  const loc = wxPickLocation(day);
+
+  const setLoading = () => {
+    pill.innerHTML = `<span>⏳</span><strong>天氣載入中</strong><span class="wxTiny" id="wxMeta"></span>`;
+    retryBtn.style.display="none";
+  };
+  const setError = (msg) => {
+    pill.innerHTML = `<span>⚠️</span><strong>天氣載入失敗</strong><span class="wxTiny">${msg||""}</span>`;
+    retryBtn.style.display="inline-flex";
+  };
+  setLoading();
+
+  retryBtn.onclick = () => { renderWeather(day); };
+
+  try{
+    const wx = await fetchWeather(loc);
+    const icon = wxIconFromCode(wx.code);
+    const temp = (wx.temp===0 || wx.temp) ? `${Math.round(wx.temp)}°C` : "--";
+    const wind = (wx.wind===0 || wx.wind) ? `風${Math.round(wx.wind)}km/h` : "";
+    const t = wx.time ? `更新 ${fmtTime(wx.time)}` : "";
+    pill.innerHTML = `<span>${icon}</span><strong>${loc.name} ${temp}</strong><span class="wxTiny">${wind ? wind+" · " : ""}${t}</span>`;
+    retryBtn.style.display="none";
+  }catch(e){
+    setError("可按重試");
+  }
+}
 
 function renderTabs(){
   const tabs=document.getElementById("tabs"); tabs.innerHTML="";
@@ -165,7 +299,8 @@ function renderTabs(){
 }
 function renderSelector(){
   const sel=document.getElementById("selector"); sel.innerHTML="";
-  if(ACTIVE_TAB==="itinerary"){
+  if(ACTIVE_TAB==="catalog"){ sel.appendChild(el(`<div style="height:2px"></div>`)); }
+  else if(ACTIVE_TAB==="itinerary"){
     (DATA.days||[]).forEach(d=>{
       const c=el(`<button class="chip ${d.day===ACTIVE_DAY?'active':''}">Day ${d.day}</button>`);
       c.onclick=()=>{ACTIVE_DAY=d.day; render(); window.scrollTo({top:0, behavior:"smooth"});};
@@ -249,7 +384,15 @@ function unlockBodyScroll(){
   window.scrollTo(0, __scrollY);
 }
 
+
+function galleryHtml(imgs){
+  const list=(imgs||[]).filter(Boolean);
+  if(!list.length) return "";
+  const items=list.map(src=>`<img class="gImg" src="${resolveImg(src)}" alt="圖片" loading="lazy" />`).join("");
+  return `<div class="gallery">${items}</div>`;
+}
 function openModal(opts){
+
   const bg=document.getElementById("modalBg");
   const card=document.getElementById("modalCard");
   const title=opts.title||"", subtitle=opts.subtitle||"", tags=opts.tags||[], type=opts.type||"spot";
@@ -276,7 +419,7 @@ function openModal(opts){
         <div class="badges">${badgesHtml}</div>
       </div>
     </div>
-    <div class="modalBody" id="modalBody">${body}</div>
+    <div class="modalBody" id="modalBody">${galleryHtml(opts.images)}${body}</div>
     <div class="modalBottom">
       <div class="modalActions">
         ${linksHtml}
@@ -308,6 +451,51 @@ function onTouchEnd(){ if(!dragging) return; dragging=false;
 
 function matchQuery(s){ if(!QUERY) return true; const q=QUERY.toLowerCase(); return (s||"").toLowerCase().includes(q); }
 
+
+function renderCatalog(){
+  const view=document.getElementById("view"); view.innerHTML="";
+  const c=DATA.catalog||{};
+  const coverSrc = DATA.images?.cover ? resolveImg(DATA.images.cover) : "";
+  const nagoyaSrc = DATA.images?.directory?.nagoya ? resolveImg(DATA.images.directory.nagoya) : "";
+  const tokyoSrc = DATA.images?.directory?.tokyo ? resolveImg(DATA.images.directory.tokyo) : "";
+  const title = c.title || DATA.meta?.appTitle || "旅遊小工具";
+  const sub = c.subtitle || (DATA.meta?.dateRange ? `${DATA.meta.dateRange.start} — ${DATA.meta.dateRange.end}` : "");
+  // Cover
+  view.appendChild(el(`
+    <div class="coverHero">
+      ${coverSrc ? `<img src="${coverSrc}" alt="封面" />` : `<div style="height:220px"></div>`}
+      <div class="coverOverlay">
+        <div class="ct">${title}</div>
+        <div class="cs">${sub}</div>
+      </div>
+    </div>
+  `));
+  // Directory images only (as requested)
+  view.appendChild(el('<div style="height:12px"></div>'));
+  view.appendChild(el(`
+    <div class="card" style="--typeLine: rgba(120,120,120,.45)">
+      <div class="title2">目錄</div>
+      <div class="small">點選天數可快速進入每日行程。</div>
+      <div class="dayJumpRow" id="catalogDayJumps"></div>
+    </div>
+  `));
+  const jump=document.getElementById("catalogDayJumps");
+  (DATA.days||[]).forEach(d=>{
+    const b=el(`<button class="dayJump">Day ${d.day}</button>`);
+    b.onclick=()=>{ACTIVE_TAB="itinerary"; ACTIVE_DAY=d.day; render(); window.scrollTo({top:0, behavior:"smooth"});};
+    jump.appendChild(b);
+  });
+  view.appendChild(el('<div style="height:10px"></div>'));
+  const g=el('<div class="grid"></div>');
+  if(nagoyaSrc){
+    g.appendChild(el(`<div class="card" style="--typeLine: rgba(120,120,120,.45)"><div class="title2">名古屋段</div><div class="small">（行程概覽）</div><div class="gallery"><img class="gImg" style="height:260px" src="${nagoyaSrc}" alt="名古屋概覽"/></div></div>`));
+  }
+  if(tokyoSrc){
+    g.appendChild(el(`<div class="card" style="--typeLine: rgba(120,120,120,.45)"><div class="title2">東京段</div><div class="small">（行程概覽）</div><div class="gallery"><img class="gImg" style="height:260px" src="${tokyoSrc}" alt="東京概覽"/></div></div>`));
+  }
+  view.appendChild(g);
+}
+
 function renderItinerary(){
   const view=document.getElementById("view"); view.innerHTML="";
   const day=(DATA.days||[]).find(d=>d.day===ACTIVE_DAY); if(!day) return;
@@ -315,7 +503,26 @@ function renderItinerary(){
   view.appendChild(el(`<div class="card" style="--typeLine: rgba(120,120,120,.45)">
     <div class="title2">Day ${day.day} · ${day.date}</div>
     <div class="small">${day.title}<br><span style="color:var(--muted)">${day.city||""}</span></div>
+    <div class="dayJumpRow" id="dayJumpRow"></div>
+    <div class="weatherRow" id="weatherRow">
+      <span class="wxPill"><span>⏳</span><strong>天氣載入中</strong><span class="wxTiny" id="wxMeta"></span></span>
+      <button class="wxBtn" id="wxRetry" type="button" style="display:none">重試</button>
+    </div>
   </div>`));
+  renderWeather(day);
+  // Day quick jump (incl. Catalog)
+  const jr = document.getElementById("dayJumpRow");
+  if(jr){
+    jr.innerHTML="";
+    const catBtn = el(`<button class="dayJump">目錄</button>`);
+    catBtn.onclick=()=>{ACTIVE_TAB="catalog"; render(); window.scrollTo({top:0, behavior:"smooth"});};
+    jr.appendChild(catBtn);
+    (DATA.days||[]).forEach(d=>{
+      const b=el(`<button class="dayJump ${d.day===ACTIVE_DAY?'active':''}">Day ${d.day}</button>`);
+      b.onclick=()=>{ACTIVE_DAY=d.day; render(); window.scrollTo({top:0, behavior:"smooth"});};
+      jr.appendChild(b);
+    });
+  }
   view.appendChild(el('<div style="height:10px"></div>'));
   const grid=el(`<div class="grid"></div>`);
   list.forEach(item=>{
@@ -419,7 +626,8 @@ function renderEssentials(){
 }
 
 function render(){ renderTabs(); renderSelector();
-  if(ACTIVE_TAB==="itinerary") renderItinerary();
+  if(ACTIVE_TAB==="catalog") renderCatalog();
+  else if(ACTIVE_TAB==="itinerary") renderItinerary();
   else if(ACTIVE_TAB==="transport") renderTransport();
   else renderEssentials();
 }
