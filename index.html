@@ -229,6 +229,26 @@ function pickAccent(tags,type){
 function section(title, html){ if(!html) return ""; return `<div class="sectionTitle">${title}</div><div class="block">${html}</div>`; }
 function listSection(title, arr){ if(!arr||!arr.length) return ""; const li=arr.map(x=>`<li>${x}</li>`).join(""); return `<div class="sectionTitle">${title}</div><ul class="list">${li}</ul>`; }
 
+let __scrollY = 0;
+function lockBodyScroll(){
+  __scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${__scrollY}px`;
+  document.body.style.left = "0";
+  document.body.style.right = "0";
+  document.body.style.width = "100%";
+  document.body.style.overflow = "hidden";
+}
+function unlockBodyScroll(){
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.left = "";
+  document.body.style.right = "";
+  document.body.style.width = "";
+  document.body.style.overflow = "";
+  window.scrollTo(0, __scrollY);
+}
+
 function openModal(opts){
   const bg=document.getElementById("modalBg");
   const card=document.getElementById("modalCard");
@@ -264,6 +284,7 @@ function openModal(opts){
       </div>
     </div>`;
   bg.classList.add("show");
+  lockBodyScroll();
   document.getElementById("closeBtn").onclick=closeModal;
   bg.onclick=(e)=>{ if(e.target===bg) closeModal(); };
   const grabs=card.querySelectorAll('[data-grab="1"]');
@@ -274,7 +295,7 @@ function openModal(opts){
   });
 }
 function closeModal(){ const bg=document.getElementById("modalBg"); const card=document.getElementById("modalCard");
-  card.style.transform="translateY(0px)"; bg.classList.remove("show"); }
+  card.style.transform="translateY(0px)"; bg.classList.remove("show"); unlockBodyScroll(); }
 
 function onTouchStart(e){ dragging=true; dragStartY=e.touches[0].clientY; dragCurrentY=dragStartY; }
 function onTouchMove(e){ if(!dragging) return; dragCurrentY=e.touches[0].clientY;
