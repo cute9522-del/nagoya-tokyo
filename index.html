@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>名古屋 → 東京 8日旅遊小工具</title>
+<style>
+:root{
+  --bg: #fff7d6;
+  --border: #422615;
+  --card: rgba(255,255,255,0.48);
+  --cardHi: rgba(255,255,255,0.68);
+  --radius: 14px;
+  --bw: 1px;
+
+  --text: rgba(38,34,30,0.92);
+  --text2: rgba(38,34,30,0.66);
+  --muted: rgba(38,34,30,0.48);
+
+  --lineW: 3px;
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Hiragino Sans", "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--text);
+}
+
+.wrap{
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 18px 14px 90px;
+}
+
+.header{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  background: color-mix(in oklab, var(--bg), rgba(255,255,255,.35) 40%);
+  border-bottom: 1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.55) 55%);
+}
+.headerInner{
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 14px 14px 10px;
+}
+.hTitle{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+}
+.hTitle h1{
+  font-size: 18px;
+  letter-spacing: .2px;
+  margin: 0;
+}
+.hTitle .sub{
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.tabs{
+  display:flex;
+  gap:8px;
+  margin-top: 10px;
+}
+.tab{
+  flex:1;
+  border: 1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.65) 55%);
+  background: rgba(255,255,255,.20);
+  border-radius: 999px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--text2);
+}
+.tab.active{
+  background: rgba(255,255,255,.40);
+  color: var(--text);
+}
+
+.sectionTitle{
+  margin: 18px 2px 10px;
+  font-size: 13px;
+  color: var(--text2);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.dayPill{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.65) 55%);
+  background: rgba(255,255,255,.20);
+}
+
+.grid{
+  display:grid;
+  gap: 10px;
+}
+
+.card{
+  position:relative;
+  background: var(--card);
+  border: var(--bw) solid color-mix(in oklab, var(--border), rgba(255,255,255,.65) 55%);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px 12px 12px calc(12px + var(--lineW));
+  overflow:hidden;
+}
+/* 3px 類型色細線（原生 App 風格） */
+.card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width: var(--lineW);
+  background: var(--typeLine, rgba(120,120,120,.35));
+}
+.card.highlight{ background: var(--cardHi); }
+
+.row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+.time{
+  min-width: 58px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.title2{
+  font-size: 15px;
+  margin: 0;
+  line-height: 1.25;
+}
+.meta{
+  margin-top: 6px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.tag{
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.26);
+  border: 1px solid rgba(0,0,0,.05);
+  color: var(--text2);
+}
+.tag.strong{
+  font-weight: 650;
+  color: var(--text);
+  background: rgba(255,255,255,.38);
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+  margin-top: 10px;
+}
+.btn{
+  flex:1;
+  border: 1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.70) 60%);
+  background: rgba(255,255,255,.25);
+  border-radius: 10px;
+  padding: 10px 10px;
+  font-size: 13px;
+  color: var(--text);
+  text-align:center;
+  text-decoration:none;
+}
+.btn.secondary{
+  color: var(--text2);
+}
+
+.small{
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.footerBar{
+  position:fixed;
+  left:0; right:0; bottom:0;
+  padding: 10px 14px 16px;
+  background: color-mix(in oklab, var(--bg), rgba(255,255,255,.40) 40%);
+  border-top: 1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.65) 55%);
+  backdrop-filter: blur(10px);
+}
+.footerInner{max-width: 860px; margin:0 auto; display:flex; gap:10px;}
+.search{
+  flex:1;
+  border-radius: 12px;
+  border: 1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.65) 55%);
+  background: rgba(255,255,255,.26);
+  padding: 12px 12px;
+  font-size: 14px;
+  outline:none;
+  color: var(--text);
+}
+.pillBtn{
+  border-radius: 12px;
+  border: 1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.65) 55%);
+  background: rgba(255,255,255,.26);
+  padding: 12px 12px;
+  font-size: 14px;
+}
+
+.modalBg{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.25);
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  z-index: 50;
+}
+.modalBg.show{display:flex;}
+.sheet{
+  width: min(860px, 100%);
+  border-radius: 18px 18px 0 0;
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(0,0,0,.05);
+  box-shadow: 0 -12px 40px rgba(0,0,0,.18);
+  padding: 14px 14px 20px;
+  max-height: 78vh;
+  overflow:auto;
+}
+.sheet h2{margin: 2px 0 8px; font-size: 16px;}
+.sheet .muted{color: var(--muted); font-size: 12px;}
+.sheet .block{margin-top: 10px; font-size: 13px; color: var(--text2); line-height: 1.55;}
+.sheet .links{display:flex; gap:8px; flex-wrap:wrap; margin-top: 10px;}
+.sheet .close{margin-top: 12px;}
+.kv{display:grid; grid-template-columns: 84px 1fr; gap: 8px 12px; font-size: 13px; color: var(--text2);}
+.kv b{color: var(--text);}
+
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="headerInner">
+      <div class="hTitle">
+        <h1 id="appTitle">名古屋 → 東京 8日旅遊小工具</h1>
+        <div class="sub">2025-12-20 — 2025-12-27</div>
+      </div>
+      <div class="tabs" id="tabs"></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div id="view"></div>
+  </div>
+
+  <div class="footerBar">
+    <div class="footerInner">
+      <input id="q" class="search" placeholder="搜尋景點/餐廳/交通（例如：蓬萊軒、吉卜力、新幹線）" />
+      <button id="topBtn" class="pillBtn" title="回到頂部">↑</button>
+    </div>
+  </div>
+
+  <div class="modalBg" id="modalBg" role="dialog" aria-modal="true" aria-label="詳細資訊">
+    <div class="sheet" id="sheet"></div>
+  </div>
+
+<script>
+const TYPE_COLORS = {"flight": "rgba(196,116,116,0.55)", "train": "rgba(108,133,155,0.55)", "bus": "rgba(146,124,102,0.55)", "metro": "rgba(120,120,120,0.45)", "walk": "rgba(120,120,120,0.33)", "hotel": "rgba(132,116,156,0.55)", "food": "rgba(186,140,98,0.55)", "cafe": "rgba(170,140,122,0.50)", "spot": "rgba(126,152,126,0.50)", "shopping": "rgba(162,128,150,0.48)", "view": "rgba(140,150,176,0.48)", "area": "rgba(140,140,140,0.38)"};
+const LINE_W = 3;
+let DATA = null;
+let ACTIVE_TAB = "itinerary";
+let QUERY = "";
+
+function el(html) {
+  const t = document.createElement("template");
+  t.innerHTML = html.trim();
+  return t.content.firstElementChild;
+}
+
+function safe(s) {
+  return (s ?? "").toString();
+}
+
+function makeGoogleMapsNav(name) {
+  const q = encodeURIComponent(name);
+  return `https://www.google.com/maps/search/?api=1&query=${q}`;
+}
+
+function makeSearchOfficial(name) {
+  const q = encodeURIComponent(name + " 公式サイト");
+  return `https://www.google.com/search?q=${q}`;
+}
+
+function typeLineColor(type) {
+  return TYPE_COLORS[type] || "rgba(120,120,120,.35)";
+}
+
+function renderTabs() {
+  const tabs = document.getElementById("tabs");
+  tabs.innerHTML = "";
+  DATA.tabs.forEach(t => {
+    const b = el(`<button class="tab ${t.id===ACTIVE_TAB?'active':''}" data-tab="${t.id}">${t.label}</button>`);
+    b.onclick = () => { ACTIVE_TAB = t.id; render(); window.scrollTo({top:0, behavior:"smooth"}); };
+    tabs.appendChild(b);
+  });
+}
+
+function tagHtml(tags) {
+  return (tags||[]).map(x => {
+    const strong = (x.includes("必") || x.includes("需") || x.includes("指定") || x.includes("預約"));
+    return `<span class="tag ${strong?'strong':''}">${x}</span>`;
+  }).join("");
+}
+
+function cardHtml(item) {
+  const t = item.type || "spot";
+  const isHi = !!item.highlight;
+  const name = safe(item.name);
+  const time = safe(item.time);
+  const detail = safe(item.detail);
+
+  const official = (item.links||[]).find(l => (l.label||"").includes("官方"));
+  const officialUrl = official?.url || item.officialLink || "";
+  const navUrl = makeGoogleMapsNav(name);
+  const fallbackOfficial = makeSearchOfficial(name);
+
+  const transportRef = item.transportRef || "";
+
+  return `
+  <div class="card ${isHi?'highlight':''}" style="--typeLine:${typeLineColor(t)}">
+    <div class="row">
+      <div class="time">${time}</div>
+      <div style="flex:1">
+        <div class="title2">${name}</div>
+        <div class="meta">${tagHtml(item.tags)}</div>
+      </div>
+      <div>
+        <button class="btn secondary" style="padding:8px 10px; font-size:12px" data-open="1">詳細</button>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="btn" href="${navUrl}" target="_blank" rel="noreferrer">導航</a>
+      ${officialUrl
+        ? `<a class="btn secondary" href="${officialUrl}" target="_blank" rel="noreferrer">官方</a>`
+        : `<a class="btn secondary" href="${fallbackOfficial}" target="_blank" rel="noreferrer">搜尋官網</a>`}
+    </div>
+    ${detail ? `<div class="small">${detail}</div>` : ""}
+  </div>`;
+}
+
+function openSheet(title, subtitle, blocks, links) {
+  const bg = document.getElementById("modalBg");
+  const sheet = document.getElementById("sheet");
+  const linkHtml = (links||[]).map(l => `<a class="btn" href="${l.url}" target="_blank" rel="noreferrer">${l.label}</a>`).join("");
+  const blocksHtml = (blocks||[]).map(b => `<div class="block">${b}</div>`).join("");
+  sheet.innerHTML = `
+    <div class="muted">${subtitle||""}</div>
+    <h2>${title}</h2>
+    ${blocksHtml}
+    <div class="links">${linkHtml}</div>
+    <div class="close"><button class="btn" id="closeBtn">關閉</button></div>
+  `;
+  bg.classList.add("show");
+  document.getElementById("closeBtn").onclick = closeSheet;
+  bg.onclick = (e) => { if (e.target === bg) closeSheet(); };
+}
+
+function closeSheet() {
+  document.getElementById("modalBg").classList.remove("show");
+}
+
+function matchQuery(s) {
+  if (!QUERY) return true;
+  const q = QUERY.toLowerCase();
+  return (s||"").toLowerCase().includes(q);
+}
+
+function renderItinerary() {
+  const view = document.getElementById("view");
+  view.innerHTML = "";
+  DATA.days.forEach(d => {
+    // filter by search query: if none of spots match, hide day
+    const hits = (d.spots||[]).filter(x => matchQuery(x.name) || matchQuery((x.tags||[]).join(" ")));
+    if (QUERY && hits.length === 0) return;
+
+    const sec = el(`<div></div>`);
+    const pill = el(`<div class="sectionTitle">
+      <div class="dayPill"><b>Day ${d.day}</b><span style="color:var(--muted); font-size:12px">${d.date}</span></div>
+      <div style="color:var(--muted); font-size:12px">${d.city||""}</div>
+    </div>`);
+    sec.appendChild(pill);
+
+    const grid = el(`<div class="grid"></div>`);
+    const list = QUERY ? hits : (d.spots||[]);
+    list.forEach(item => {
+      const node = el(cardHtml(item));
+      // attach detail handler
+      node.querySelector('[data-open="1"]').onclick = () => {
+        const name = safe(item.name);
+        const t = item.type || "spot";
+        const blocks = [];
+        if (item.detail) blocks.push(item.detail);
+        if (item.transportRef) {
+          const tr = (DATA.transports||[]).find(x => x.id === item.transportRef);
+          if (tr) {
+            blocks.push(`<b>交通資訊</b>`);
+            if (tr.route) blocks.push(`路線：${tr.route}`);
+            if (tr.departureDate) blocks.push(`日期：${tr.departureDate}`);
+            if (tr.from && tr.to) blocks.push(`時間：${tr.from.time} → ${tr.to.time}`);
+            if (tr.train) {
+              blocks.push(`車次：${tr.train.name}（${tr.train.series} / ${tr.train.cars} 両 / ${tr.train.class}）`);
+              if (tr.train.seats?.length) blocks.push(`座位：${tr.train.seats.join(", ")}`);
+            }
+            if (tr.notes?.length) blocks.push(`<b>提醒</b><br>${tr.notes.map(n=>`• ${n}`).join("<br>")}`);
+          }
+        }
+        if (item.tags?.length) blocks.push(`<b>標籤</b><br>${item.tags.map(x=>"• "+x).join("<br>")}`);
+
+        const links = [];
+        // official links if present
+        (item.links||[]).forEach(l => links.push(l));
+        if (item.officialLink) links.push({label:"官方", url:item.officialLink});
+        // always provide nav
+        links.push({label:"導航", url: makeGoogleMapsNav(name)});
+        if (!links.some(l => (l.label||"").includes("官方"))) {
+          links.push({label:"搜尋官網", url: makeSearchOfficial(name)});
+        }
+        openSheet(name, `${d.date} · Day ${d.day}`, blocks, links);
+      };
+      grid.appendChild(node);
+    });
+    sec.appendChild(grid);
+
+    if (d.paceAssessment?.note) {
+      const note = el(`<div class="card" style="--typeLine: rgba(120,120,120,.25)">
+        <div class="title2">節奏評估</div>
+        <div class="small">${d.paceAssessment.isTooPacked ? "偏趕：":"OK："}${d.paceAssessment.note}</div>
+      </div>`);
+      sec.appendChild(el('<div style="height:8px"></div>'));
+      sec.appendChild(note);
+    }
+    view.appendChild(sec);
+  });
+}
+
+function renderTransport() {
+  const view = document.getElementById("view");
+  view.innerHTML = "";
+  const list = (DATA.transports||[]).filter(t => !QUERY || matchQuery(t.title) || matchQuery(t.route) || matchQuery(JSON.stringify(t)));
+  if (list.length===0) {
+    view.appendChild(el(`<div class="card" style="--typeLine: rgba(120,120,120,.25)">
+      <div class="title2">找不到符合的交通資訊</div>
+      <div class="small">請調整搜尋關鍵字。</div>
+    </div>`));
+    return;
+  }
+  list.forEach(tr => {
+    const blocks = [];
+    if (tr.route) blocks.push(`路線：${tr.route}`);
+    if (tr.departureDate) blocks.push(`日期：${tr.departureDate}`);
+    if (tr.from && tr.to) blocks.push(`時間：${tr.from.name} ${tr.from.time} → ${tr.to.name} ${tr.to.time}`);
+    if (tr.train) {
+      blocks.push(`車次：${tr.train.name}（${tr.train.series} / ${tr.train.cars} 両 / ${tr.train.class}）`);
+      if (tr.train.seats?.length) blocks.push(`座位：${tr.train.seats.join(", ")}`);
+    }
+    if (tr.notes?.length) blocks.push(`提醒：<br>${tr.notes.map(n=>`• ${n}`).join("<br>")}`);
+
+    const node = el(`
+      <div class="card" style="--typeLine:${typeLineColor(tr.mode)}">
+        <div class="row">
+          <div class="time">${tr.mode.toUpperCase()}</div>
+          <div style="flex:1">
+            <div class="title2">${tr.title}</div>
+            <div class="small">${blocks.join("<br>")}</div>
+          </div>
+          <div><button class="btn secondary" style="padding:8px 10px; font-size:12px" data-open="1">詳細</button></div>
+        </div>
+      </div>
+    `);
+    node.querySelector('[data-open="1"]').onclick = () => {
+      openSheet(tr.title, tr.operator || "交通", blocks, tr.links||[]);
+    };
+    view.appendChild(node);
+  });
+}
+
+function renderEssentials() {
+  const view = document.getElementById("view");
+  view.innerHTML = "";
+
+  const e = DATA.essentials || {};
+  const flights = e.flights || [];
+  const lodgings = e.lodgings || [];
+  const emergency = e.emergency || [];
+
+  const flightsCard = el(`<div class="card" style="--typeLine:${typeLineColor('flight')}">
+    <div class="title2">航班資訊</div>
+    <div class="small">
+      ${flights.map(f => `• ${f.direction}：${f.date} ${f.flightNo}（${f.from} → ${f.to}）`).join("<br>") || "（未填）"}
+    </div>
+  </div>`);
+
+  const lodgingsCard = el(`<div class="card" style="--typeLine:${typeLineColor('hotel')}">
+    <div class="title2">住宿資訊</div>
+    <div class="small">
+      ${lodgings.map(l => `• ${l.city}：${l.name}<br><span style="color:var(--muted)">${l.address}</span>`).join("<br><br>") || "（未填）"}
+    </div>
+  </div>`);
+
+  const emergencyCard = el(`<div class="card" style="--typeLine: rgba(120,120,120,.25)">
+    <div class="title2">緊急聯絡</div>
+    <div class="small">
+      ${emergency.map(x => `• ${x.label}：<b>${x.value}</b>`).join("<br>") || "（未填）"}
+    </div>
+  </div>`);
+
+  const budgetCard = el(`<div class="card" style="--typeLine: rgba(120,120,120,.25)">
+    <div class="title2">記帳／預算表（模板）</div>
+    <div class="small">
+      幣別：${e.budgetTemplate?.currencyBase || "JPY"}<br>
+      分類：${(e.budgetTemplate?.categories||[]).join("、")}<br><br>
+      建議做法：每天睡前 3 分鐘，把「交通/餐飲/門票/購物」四類先記完即可。
+    </div>
+  </div>`);
+
+  view.appendChild(flightsCard);
+  view.appendChild(el('<div style="height:10px"></div>'));
+  view.appendChild(lodgingsCard);
+  view.appendChild(el('<div style="height:10px"></div>'));
+  view.appendChild(emergencyCard);
+  view.appendChild(el('<div style="height:10px"></div>'));
+  view.appendChild(budgetCard);
+}
+
+function render() {
+  renderTabs();
+  if (ACTIVE_TAB === "itinerary") renderItinerary();
+  else if (ACTIVE_TAB === "transport") renderTransport();
+  else renderEssentials();
+}
+
+async function load() {
+  const res = await fetch("./itinerary.json", {cache:"no-store"});
+  DATA = await res.json();
+  document.getElementById("appTitle").textContent = DATA.meta?.appTitle || "Trip";
+  render();
+}
+
+document.getElementById("q").addEventListener("input", (e) => {
+  QUERY = e.target.value.trim();
+  render();
+});
+document.getElementById("topBtn").onclick = () => window.scrollTo({top:0, behavior:"smooth"});
+
+load().catch(err => {
+  const v = document.getElementById("view");
+  v.innerHTML = `<div class="card" style="--typeLine: rgba(120,120,120,.25)">
+    <div class="title2">資料載入失敗</div>
+    <div class="small">請確認 itinerary.json 與 index.html 在同一層，並重新整理。<br><span style="color:var(--muted)">${String(err)}</span></div>
+  </div>`;
+});
+</script>
+</body>
+</html>

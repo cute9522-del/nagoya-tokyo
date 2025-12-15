@@ -1,7 +1,7 @@
 {
   "meta": {
     "appTitle": "名古屋 → 東京 8日旅遊小工具",
-    "version": "itinerary-json-v1-fixed",
+    "version": "v5-muted-typeline",
     "locale": "zh-Hant-TW",
     "timezone": "Asia/Taipei",
     "dateRange": {
@@ -13,61 +13,117 @@
     "background": "#fff7d6",
     "border": "#422615",
     "card": {
-      "bg": "rgba(255,255,255,0.55)",
-      "bgHighlight": "rgba(255,255,255,0.72)",
+      "bg": "rgba(255,255,255,0.48)",
+      "bgHighlight": "rgba(255,255,255,0.68)",
       "borderWidth": 1,
       "radius": 14
     },
     "text": {
       "primary": "rgba(38,34,30,0.92)",
-      "secondary": "rgba(38,34,30,0.65)",
-      "muted": "rgba(38,34,30,0.45)"
+      "secondary": "rgba(38,34,30,0.66)",
+      "muted": "rgba(38,34,30,0.48)"
     },
     "typeLine": {
       "widthPx": 3,
       "colors": {
-        "flight": "rgba(232,122,122,0.55)",
-        "train": "rgba(94,130,154,0.55)",
-        "bus": "rgba(154,124,94,0.55)",
+        "flight": "rgba(196,116,116,0.55)",
+        "train": "rgba(108,133,155,0.55)",
+        "bus": "rgba(146,124,102,0.55)",
         "metro": "rgba(120,120,120,0.45)",
-        "walk": "rgba(120,120,120,0.35)",
-        "hotel": "rgba(126,107,168,0.55)",
-        "food": "rgba(200,140,92,0.55)",
-        "cafe": "rgba(180,140,120,0.50)",
-        "spot": "rgba(120,160,120,0.50)",
-        "shopping": "rgba(170,120,150,0.50)",
-        "view": "rgba(140,150,190,0.50)"
+        "walk": "rgba(120,120,120,0.33)",
+        "hotel": "rgba(132,116,156,0.55)",
+        "food": "rgba(186,140,98,0.55)",
+        "cafe": "rgba(170,140,122,0.50)",
+        "spot": "rgba(126,152,126,0.50)",
+        "shopping": "rgba(162,128,150,0.48)",
+        "view": "rgba(140,150,176,0.48)",
+        "area": "rgba(140,140,140,0.38)"
       }
     },
-    "dayTitleColors": {
-      "day1": "rgba(206,92,92,0.95)",
-      "day2": "rgba(210,130,70,0.95)",
-      "day3": "rgba(214,170,70,0.95)",
-      "day4": "rgba(95,155,110,0.95)",
-      "day5": "rgba(90,140,185,0.95)",
-      "day6": "rgba(90,140,185,0.95)",
-      "day7": "rgba(150,110,170,0.95)",
-      "day8": "rgba(206,92,92,0.95)"
+    "titleColors": {
+      "itinerary": "rgba(38,34,30,0.92)",
+      "transport": "rgba(38,34,30,0.92)"
     }
   },
   "tabs": [
-    { "id": "itinerary", "label": "行程" },
-    { "id": "transport", "label": "交通" }
+    {
+      "id": "itinerary",
+      "label": "行程"
+    },
+    {
+      "id": "transport",
+      "label": "交通"
+    },
+    {
+      "id": "essentials",
+      "label": "重要資訊"
+    }
   ],
+  "essentials": {
+    "flights": [
+      {
+        "direction": "去程",
+        "date": "2025-12-20",
+        "flightNo": "CI154",
+        "from": "TPE",
+        "to": "NGO"
+      },
+      {
+        "direction": "回程",
+        "date": "2025-12-27",
+        "flightNo": "BR195",
+        "from": "NRT",
+        "to": "TPE"
+      }
+    ],
+    "lodgings": [
+      {
+        "city": "名古屋",
+        "name": "Gold Stay Nagoya Sakae ゴールドステイ名古屋 栄",
+        "address": "〒460-0008 愛知県名古屋市中区栄４丁目９−22"
+      },
+      {
+        "city": "東京",
+        "name": "OMO5 東京大塚 by 星野集團 OMO5東京大塚 by 星野リゾート",
+        "address": "〒170-0004 東京都豊島区北大塚２丁目２６−1"
+      }
+    ],
+    "emergency": [
+      {
+        "label": "日本緊急（警察）",
+        "value": "110"
+      },
+      {
+        "label": "日本緊急（消防/救護）",
+        "value": "119"
+      }
+    ],
+    "budgetTemplate": {
+      "currencyBase": "JPY",
+      "categories": [
+        "交通",
+        "餐飲",
+        "門票",
+        "購物",
+        "住宿",
+        "其他"
+      ]
+    }
+  },
   "transports": [
     {
       "id": "t_usky_ngo_nagoya",
       "mode": "train",
-      "title": "名古屋機場 → 名古屋（μ-SKY）",
+      "title": "名古屋機場 → 名鐵名古屋（μ-SKY）",
       "operator": "Meitetsu",
       "route": "NGO 中部國際機場 → 名鐵名古屋",
       "notes": [
         "μ-SKY 為名鐵特急指定席列車（需特急券/指定席）。",
-        "若你們到站時間不確定，可改搭一般特急/準急彈性更高。"
+        "若你們到站時間不確定，可改搭一般特急/準急，彈性更高。"
       ],
       "links": [
         {
-          "label": "名鐵μ-SKY 官方資訊",
+          "label": "名鐵μ-SKY（官方）",
           "url": "https://www.meitetsu.co.jp/eng/train/limited_express/musky/"
         }
       ]
@@ -78,22 +134,33 @@
       "title": "名古屋 → 東京（NOZOMI 246）",
       "operator": "JR Central",
       "departureDate": "2025-12-23",
-      "from": { "name": "Nagoya", "time": "17:06" },
-      "to": { "name": "Tokyo", "time": "18:45" },
+      "from": {
+        "name": "Nagoya",
+        "time": "17:06"
+      },
+      "to": {
+        "name": "Tokyo",
+        "time": "18:45"
+      },
       "train": {
         "name": "NOZOMI 246",
         "series": "N700",
         "cars": 16,
         "class": "Ordinary",
-        "seats": ["Car 5 Seat 1-B", "Car 5 Seat 1-C", "Car 5 Seat 1-D", "Car 5 Seat 1-E"]
+        "seats": [
+          "Car 5 Seat 1-B",
+          "Car 5 Seat 1-C",
+          "Car 5 Seat 1-D",
+          "Car 5 Seat 1-E"
+        ]
       },
       "notes": [
-        "建議提早 15–20 分鐘到月台，東京站下車後動線較大。",
-        "若要在車上吃便當，名古屋站可先買。"
+        "建議提早 15–20 分鐘到月台，東京站下車後人流大。",
+        "想在車上吃便當：名古屋站先買最省心。"
       ],
       "links": [
         {
-          "label": "JR Central Tokaido Shinkansen（官方）",
+          "label": "JR Central（官方）",
           "url": "https://global.jr-central.co.jp/en/"
         }
       ]
@@ -103,106 +170,178 @@
     {
       "day": 1,
       "date": "2025-12-20",
-      "weekday": "Sat",
-      "title": "抵達名古屋・大須/榮商圈",
+      "title": "抵達名古屋・大須／榮商圈",
       "city": "Nagoya",
       "spots": [
-        { "time": "03:00", "name": "市政府", "type": "metro", "tags": ["出發"], "highlight": false, "detail": "出門集合/前往機場。", "links": [] },
-        { "time": "04:53", "name": "TPE・臺灣桃園國際機場", "type": "flight", "tags": ["航班"], "highlight": false, "detail": "辦理報到、安檢與登機。", "links": [] },
-        { "time": "11:05", "name": "NGO・中部國際機場（新特麗亞）", "type": "flight", "tags": ["抵達"], "highlight": false, "detail": "入境、領行李、換匯/領網卡。", "links": [] },
+        {
+          "time": "04:53",
+          "name": "TPE・臺灣桃園國際機場",
+          "type": "flight",
+          "tags": [
+            "航班"
+          ],
+          "highlight": false,
+          "detail": "辦理報到、安檢與登機。",
+          "links": []
+        },
+        {
+          "time": "11:05",
+          "name": "NGO・中部國際機場（新特麗亞）",
+          "type": "flight",
+          "tags": [
+            "抵達"
+          ],
+          "highlight": true,
+          "detail": "入境、領行李；可先處理交通/網卡。",
+          "links": []
+        },
         {
           "time": "11:30",
           "name": "交通：μ-SKY 前往名鐵名古屋",
           "type": "train",
-          "tags": ["交通"],
+          "tags": [
+            "交通"
+          ],
           "highlight": true,
           "transportRef": "t_usky_ngo_nagoya",
-          "detail": "名古屋機場 → 名鐵名古屋（μ-SKY）。",
+          "detail": "名古屋機場 → 名鐵名古屋。",
           "links": []
         },
-        { "time": "12:53", "name": "名古屋車站", "type": "metro", "tags": ["抵達市區"], "highlight": false, "detail": "到站後可先寄放行李（車站置物櫃/飯店）。", "links": [] },
         {
           "time": "13:25",
           "name": "Coffee House Kako",
           "type": "cafe",
-          "tags": ["咖啡", "早午餐"],
+          "tags": [
+            "咖啡",
+            "小倉吐司"
+          ],
           "highlight": true,
-          "detail": "名古屋在地咖啡店；建議點厚片/小倉吐司搭咖啡。",
+          "detail": "名古屋經典喫茶；點小倉吐司/咖啡。",
           "links": []
         },
-        { "time": "14:15", "name": "三輪神社", "type": "spot", "tags": ["神社"], "highlight": false, "detail": "大須周邊散步點。", "links": [] },
-        { "time": "14:51", "name": "大須商店街", "type": "shopping", "tags": ["逛街"], "highlight": false, "detail": "從小吃到雜貨、二手，適合慢逛。", "links": [] },
-        { "time": "16:10", "name": "榮（愛知）", "type": "area", "tags": ["商圈"], "highlight": false, "detail": "移動至榮商圈，之後可一路逛到晚餐。", "links": [] },
-        { "time": "16:24", "name": "水果蛋糕 HARBS 本店", "type": "cafe", "tags": ["甜點"], "highlight": true, "detail": "若排隊長，可改外帶或分時段回訪。", "links": [] },
-        { "time": "17:02", "name": "SKYLE", "type": "shopping", "tags": ["百貨"], "highlight": false, "detail": "榮周邊商場之一。", "links": [] },
-        { "time": "18:18", "name": "Nagoya PARCO", "type": "shopping", "tags": ["百貨"], "highlight": false, "detail": "潮流品牌集中，逛街效率高。", "links": [] },
-        { "time": "19:33", "name": "榮 森之地下街", "type": "shopping", "tags": ["地下街"], "highlight": false, "detail": "雨天/冷天很好逛，動線連通多處。", "links": [] },
-        { "time": "20:37", "name": "唐吉訶德 榮本店", "type": "shopping", "tags": ["採買"], "highlight": false, "detail": "補貨/伴手禮可在此一次買齊。", "links": [] },
+        {
+          "time": "14:51",
+          "name": "大須商店街",
+          "type": "shopping",
+          "tags": [
+            "逛街"
+          ],
+          "highlight": false,
+          "detail": "小吃、雜貨、二手；可慢逛。",
+          "links": []
+        },
+        {
+          "time": "16:10",
+          "name": "榮（愛知）",
+          "type": "area",
+          "tags": [
+            "商圈"
+          ],
+          "highlight": false,
+          "detail": "傍晚移動至榮，行程放慢。",
+          "links": []
+        },
+        {
+          "time": "16:24",
+          "name": "HARBS 本店（甜點）",
+          "type": "cafe",
+          "tags": [
+            "必吃",
+            "蛋糕"
+          ],
+          "highlight": true,
+          "detail": "若排隊長可外帶或改非尖峰。",
+          "links": []
+        },
+        {
+          "time": "20:37",
+          "name": "唐吉訶德 榮本店",
+          "type": "shopping",
+          "tags": [
+            "採買"
+          ],
+          "highlight": false,
+          "detail": "補貨/伴手禮一次買齊。",
+          "links": []
+        },
         {
           "time": "22:21",
           "name": "Furaibo Sakae（元祖手羽先）",
           "type": "food",
-          "tags": ["名物", "宵夜"],
+          "tags": [
+            "必吃",
+            "名物"
+          ],
           "highlight": true,
-          "detail": "名古屋手羽先代表之一；若太晚可改外帶或隔天補。",
+          "detail": "名古屋手羽先代表；可視體力調整。",
           "links": []
         },
-        { "time": "23:24", "name": "Gold Stay Nagoya Sakae", "type": "hotel", "tags": ["住宿"], "highlight": false, "detail": "入住/放行李。", "links": [] },
-        { "time": "00:34", "name": "日々是好日 新栄店", "type": "food", "tags": ["宵夜"], "highlight": false, "detail": "若當天體力不足可直接略過。", "links": [] }
-      ]
+        {
+          "time": "23:24",
+          "name": "Gold Stay Nagoya Sakae",
+          "type": "hotel",
+          "tags": [
+            "住宿"
+          ],
+          "highlight": false,
+          "detail": "入住休息。",
+          "links": []
+        }
+      ],
+      "paceAssessment": {
+        "isTooPacked": false,
+        "note": "抵達日以商圈散步為主，節奏OK；把晚餐當唯一硬目標最舒服。"
+      }
     },
     {
       "day": 2,
       "date": "2025-12-21",
-      "weekday": "Sun",
-      "title": "高山・白川鄉一日團（18:00 回名古屋站）",
+      "title": "高山・白川鄉一日團（18:00 抵名古屋站）",
       "city": "Takayama / Shirakawa-go",
       "spots": [
-        { "time": "06:00", "name": "Gold Stay Nagoya Sakae", "type": "hotel", "tags": ["出發"], "highlight": false, "detail": "退房不用；簡單早餐後出發。", "links": [] },
-        { "time": "07:45", "name": "名古屋車站", "type": "metro", "tags": ["集合"], "highlight": false, "detail": "一日團集合/出發點。", "links": [] },
-        { "time": "07:51", "name": "名古屋 VIP liner", "type": "bus", "tags": ["一日團"], "highlight": false, "detail": "一日團交通/集合資訊依你們票券為準。", "links": [] },
-
-        { "time": "10:32", "name": "飛驒老街", "type": "spot", "tags": ["散步"], "highlight": true, "detail": "高山古街散步主軸（商店、酒藏、伴手禮）。", "links": [] },
-        { "time": "10:38", "name": "小瀨德魚店", "type": "food", "tags": ["小吃"], "highlight": false, "detail": "若排隊或時間緊，可直接略過。", "links": [] },
-        { "time": "11:40", "name": "宮川朝市", "type": "spot", "tags": ["市集"], "highlight": false, "detail": "視到達時間決定，若已接近中午可略過。", "links": [] },
-
-        { "time": "11:56", "name": "Andersen", "type": "cafe", "tags": ["麵包"], "highlight": false, "detail": "補充麵包/飲料的彈性點。", "links": [] },
-
-        { "time": "13:00", "name": "高山老街（回到核心區）", "type": "spot", "tags": ["主區"], "highlight": false, "detail": "回到主要街區方便銜接午餐/集合。", "links": [] },
+        {
+          "time": "07:45",
+          "name": "名古屋車站（集合）",
+          "type": "bus",
+          "tags": [
+            "一日團"
+          ],
+          "highlight": true,
+          "detail": "依你們一日團集合資訊為準。",
+          "links": []
+        },
+        {
+          "time": "10:32",
+          "name": "飛驒老街",
+          "type": "spot",
+          "tags": [
+            "必看"
+          ],
+          "highlight": true,
+          "detail": "高山古街散步主軸。",
+          "links": []
+        },
         {
           "time": "13:03",
-          "name": "飛驒特牛 壽司專賣店",
+          "name": "飛驒牛握壽司（高山）",
           "type": "food",
-          "tags": ["必吃", "飛驒牛"],
+          "tags": [
+            "必吃",
+            "飛驒牛"
+          ],
           "highlight": true,
-          "detail": "建議把『飛驒牛握壽司』當作高山必吃主目標；其餘點心看時間再加。",
+          "detail": "建議把飛驒牛握壽司當『唯一必吃』。",
           "links": []
         },
-        { "time": "13:19", "name": "飛驒高山古建築群", "type": "spot", "tags": ["拍照"], "highlight": false, "detail": "沿街就能看，時間不足可邊走邊拍。", "links": [] },
-        { "time": "13:21", "name": "飛驒老街（續逛）", "type": "spot", "tags": ["散步"], "highlight": false, "detail": "視體力與集合時間調整。", "links": [] },
-        { "time": "13:28", "name": "Takayama Rinseido", "type": "shopping", "tags": ["伴手禮"], "highlight": false, "detail": "若你們偏好零食/土產，可留 10–15 分鐘。", "links": [] },
-
-        { "time": "14:29", "name": "Noix De Coco Miyagawa Morning…", "type": "cafe", "tags": ["甜點"], "highlight": false, "detail": "甜點備案；如時間不足建議直接略過。", "links": [] },
-
-        { "time": "15:29", "name": "Seseragi Park Parking Lot", "type": "bus", "tags": ["集合/停車"], "highlight": false, "detail": "一日團停車/集合點（依導遊安排）。", "links": [] },
-        { "time": "15:50", "name": "天守閣展望台", "type": "view", "tags": ["展望"], "highlight": false, "detail": "若天候不佳或人多，優先留給合掌村散步。", "links": [] },
-        {
-          "time": "16:15",
-          "name": "豆菓子專門店「豆吉本舖」白川鄉店",
-          "type": "shopping",
-          "tags": ["伴手禮"],
-          "highlight": false,
-          "detail": "可快速買小包裝，避免佔用合掌村核心時間。",
-          "links": []
-        },
-        { "time": "16:31", "name": "Kondou Shoten", "type": "shopping", "tags": ["小店"], "highlight": false, "detail": "時間緊就略過。", "links": [] },
         {
           "time": "16:47",
           "name": "白川鄉合掌造聚落",
           "type": "spot",
-          "tags": ["必看"],
+          "tags": [
+            "必看"
+          ],
           "highlight": true,
-          "detail": "重點：聚落散步＋找 1–2 個拍照點即可，不建議塞太多店。",
+          "detail": "以『聚落散步＋1–2個拍照點』為核心。",
           "links": [
             {
               "label": "白川鄉觀光協會（官方）",
@@ -210,293 +349,450 @@
             }
           ]
         },
-
         {
           "time": "18:00",
           "name": "名古屋站（回程抵達）",
           "type": "metro",
-          "tags": ["回到市區"],
+          "tags": [
+            "回到市區"
+          ],
           "highlight": true,
-          "detail": "你們的一日團 18:00 抵達名古屋站；晚餐建議在車站/榮一帶就近解決。",
+          "detail": "18:00 回到名古屋站；晚餐就近安排。",
           "links": []
         }
       ],
-      "mustEatSuggestions": [
-        { "name": "飛驒牛握壽司", "where": "飛驒特牛 壽司專賣店（或同類店）", "note": "把它當作高山『唯一必吃』，其餘甜點看時間。" },
-        { "name": "合掌村簡單熱食/小點", "where": "白川鄉聚落內", "note": "避免排隊過長；以不耽誤散步拍照為原則。" }
-      ],
       "paceAssessment": {
         "isTooPacked": true,
-        "note": "一日團行程點位過多時，建議只鎖定『飛驒牛＋合掌村散步』兩個核心，其它全部當備案。"
+        "note": "一日團很容易點位過多：只鎖定『飛驒牛＋合掌村散步』兩核心，其餘都當備案。"
       }
     },
     {
       "day": 3,
       "date": "2025-12-22",
-      "weekday": "Mon",
-      "title": "吉卜力公園（完整）＋傍晚榮＋晚餐",
+      "title": "吉卜力公園＋傍晚榮＋蓬萊軒",
       "city": "Nagoya",
       "spots": [
-        { "time": "06:00", "name": "Gold Stay Nagoya Sakae", "type": "hotel", "tags": ["出發"], "highlight": false, "detail": "早起出發，避免入園後趕時間。", "links": [] },
         {
           "time": "08:12",
-          "name": "魔女之谷（Valley of Witches）",
+          "name": "吉卜力公園：魔女之谷",
           "type": "spot",
-          "tags": ["必看"],
+          "tags": [
+            "必看"
+          ],
           "highlight": true,
-          "detail": "建議一早先衝熱門區域，拍照人潮較少。",
+          "detail": "早到較好拍照、較少人潮。",
           "links": [
-            { "label": "吉卜力公園（官方）", "url": "https://ghibli-park.jp/en/" }
+            {
+              "label": "吉卜力公園（官方）",
+              "url": "https://ghibli-park.jp/en/"
+            }
           ]
         },
-        { "time": "09:36", "name": "Guchokipanya Bakery", "type": "food", "tags": ["必吃", "麵包"], "highlight": true, "detail": "熱門點，可能需要排隊；建議早點去。", "links": [] },
-        { "time": "09:38", "name": "13人の魔女団 紀念品商店", "type": "shopping", "tags": ["必逛"], "highlight": true, "detail": "限定商品多；可先快速掃貨再慢逛。", "links": [] },
-        { "time": "10:11", "name": "Howl's Moving Castle", "type": "spot", "tags": ["必看"], "highlight": true, "detail": "拍照點；注意動線與排隊。", "links": [] },
-        { "time": "10:28", "name": "Okino Residence Site", "type": "spot", "tags": ["取景"], "highlight": false, "detail": "若時間不夠可略過，優先留給主館。", "links": [] },
-
-        { "time": "10:40", "name": "魔女之家", "type": "spot", "tags": ["必看"], "highlight": true, "detail": "與魔女之谷同區，建議一次跑完。", "links": [] },
-        { "time": "10:51", "name": "Hatter’s Millinery", "type": "shopping", "tags": ["店鋪"], "highlight": false, "detail": "拍照/買小物備案。", "links": [] },
-        { "time": "11:22", "name": "Hotdog Stand “Hot Tin Roof”", "type": "food", "tags": ["小吃"], "highlight": false, "detail": "若排隊可直接略過。", "links": [] },
-        { "time": "11:39", "name": "Mononoke Village", "type": "spot", "tags": ["必看"], "highlight": true, "detail": "建議留拍照時間，易拍到空景。", "links": [] },
-        { "time": "12:09", "name": "Dondoko–Dokoro", "type": "spot", "tags": ["親子"], "highlight": false, "detail": "視體力決定是否深入。", "links": [] },
-        { "time": "12:23", "name": "Dondoko Forest", "type": "spot", "tags": ["散步"], "highlight": false, "detail": "若走路量太大可略過。", "links": [] },
-
-        { "time": "12:38", "name": "Satsuki and Mei's House", "type": "spot", "tags": ["必看"], "highlight": true, "detail": "熱門點，需注意預約/入場規則。", "links": [] },
-        { "time": "13:08", "name": "青春之丘", "type": "spot", "tags": ["主區"], "highlight": false, "detail": "移動銜接區。", "links": [] },
-        { "time": "13:29", "name": "地球屋", "type": "spot", "tags": ["主題"], "highlight": false, "detail": "視人潮調整停留時間。", "links": [] },
-        { "time": "14:13", "name": "吉卜力大倉庫", "type": "spot", "tags": ["必看"], "highlight": true, "detail": "建議預留最多時間的主館。", "links": [] },
-        { "time": "16:14", "name": "Milk Stand SiberiAn", "type": "food", "tags": ["甜點"], "highlight": false, "detail": "補充能量備案。", "links": [] },
-        { "time": "16:34", "name": "Shop “Adventurous Flying Squadron”", "type": "shopping", "tags": ["必逛"], "highlight": true, "detail": "紀念品最後補貨點。", "links": [] },
-
+        {
+          "time": "09:36",
+          "name": "Guchokipanya Bakery",
+          "type": "food",
+          "tags": [
+            "必吃",
+            "麵包"
+          ],
+          "highlight": true,
+          "detail": "熱門點可能排隊，早點去。",
+          "links": []
+        },
+        {
+          "time": "11:39",
+          "name": "Mononoke Village",
+          "type": "spot",
+          "tags": [
+            "必看"
+          ],
+          "highlight": true,
+          "detail": "建議留拍照時間。",
+          "links": []
+        },
+        {
+          "time": "12:38",
+          "name": "Satsuki and Mei's House",
+          "type": "spot",
+          "tags": [
+            "必看"
+          ],
+          "highlight": true,
+          "detail": "注意入場規則/時間。",
+          "links": []
+        },
+        {
+          "time": "14:13",
+          "name": "吉卜力大倉庫",
+          "type": "spot",
+          "tags": [
+            "必看"
+          ],
+          "highlight": true,
+          "detail": "建議預留最多時間的主館。",
+          "links": []
+        },
+        {
+          "time": "16:34",
+          "name": "飛行中隊商店（紀念品）",
+          "type": "shopping",
+          "tags": [
+            "必買"
+          ],
+          "highlight": true,
+          "detail": "最後補貨點。",
+          "links": []
+        },
         {
           "time": "17:39",
           "name": "榮（愛知）",
           "type": "area",
-          "tags": ["回市區", "商圈"],
+          "tags": [
+            "回市區"
+          ],
           "highlight": false,
-          "detail": "離開公園後回到榮商圈，步調可放慢。",
+          "detail": "回到市區後步調放慢。",
           "links": []
         },
         {
           "time": "18:55",
           "name": "熱田蓬萊軒（松阪屋店）",
           "type": "food",
-          "tags": ["必吃", "鰻魚飯"],
+          "tags": [
+            "必吃",
+            "鰻魚飯"
+          ],
           "highlight": true,
-          "detail": "名古屋代表名物；建議預留排隊時間或提早到現場抽號。",
+          "detail": "名古屋名物；建議預留排隊時間或提早抽號。",
           "links": [
-            { "label": "蓬萊軒（官方）", "url": "https://www.houraiken.com/" }
+            {
+              "label": "蓬萊軒（官方）",
+              "url": "https://www.houraiken.com/"
+            }
           ]
         },
         {
           "time": "20:08",
           "name": "Gold Stay Nagoya Sakae",
           "type": "hotel",
-          "tags": ["回飯店"],
+          "tags": [
+            "回飯店"
+          ],
           "highlight": false,
-          "detail": "回飯店休息；若太累可直接略過榮晚逛。",
+          "detail": "休息。",
           "links": []
         }
       ],
       "paceAssessment": {
         "isTooPacked": true,
-        "note": "吉卜力公園本身就偏滿；傍晚市區只保留『蓬萊軒』當唯一重點會更舒服。"
+        "note": "吉卜力公園本身就偏滿；傍晚只保留『蓬萊軒』作唯一硬點最舒服。"
       }
     },
     {
       "day": 4,
       "date": "2025-12-23",
-      "weekday": "Tue",
       "title": "名古屋半日＋新幹線到東京",
       "city": "Nagoya → Tokyo",
       "spots": [
-        { "time": "08:45", "name": "Gold Stay Nagoya Sakae", "type": "hotel", "tags": ["出發"], "highlight": false, "detail": "退房/寄放行李後出發。", "links": [] },
-        { "time": "09:00", "name": "Kato Coffee Sakae", "type": "cafe", "tags": ["咖啡"], "highlight": false, "detail": "早餐/咖啡補能量。", "links": [] },
         {
           "time": "09:52",
           "name": "名古屋城",
           "type": "spot",
-          "tags": ["必看"],
+          "tags": [
+            "必看"
+          ],
           "highlight": true,
-          "detail": "若遇雨/天候差，可改縮短停留時間，把重點放在城周邊。",
-          "links": [{ "label": "名古屋城（官方）", "url": "https://www.nagoyajo.city.nagoya.jp/" }]
+          "detail": "若天候差可縮短停留。",
+          "links": [
+            {
+              "label": "名古屋城（官方）",
+              "url": "https://www.nagoyajo.city.nagoya.jp/"
+            }
+          ]
         },
-        { "time": "11:30", "name": "金鯱橫丁", "type": "food", "tags": ["小吃"], "highlight": false, "detail": "可快速吃點名古屋小吃或買伴手禮。", "links": [] },
-        { "time": "12:01", "name": "矢場とん（名古屋城金シャチ横丁店）", "type": "food", "tags": ["味噌豬排"], "highlight": true, "detail": "如果想吃味噌豬排，這餐可當重點。", "links": [{ "label": "矢場とん（官方）", "url": "https://www.yabaton.com/" }] },
         {
-          "time": "13:32",
-          "name": "熱田神宮",
-          "type": "spot",
-          "tags": ["神社"],
-          "highlight": false,
-          "detail": "若下午要趕新幹線，這站可視體力縮短或略過。",
-          "links": [{ "label": "熱田神宮（官方）", "url": "https://www.atsutajingu.or.jp/jingu/" }]
+          "time": "12:01",
+          "name": "矢場とん（味噌豬排）",
+          "type": "food",
+          "tags": [
+            "必吃"
+          ],
+          "highlight": true,
+          "detail": "想吃味噌豬排可把這餐當重點。",
+          "links": [
+            {
+              "label": "矢場とん（官方）",
+              "url": "https://www.yabaton.com/"
+            }
+          ]
         },
-        { "time": "15:17", "name": "えびせんべいの里 あったnagAya店", "type": "shopping", "tags": ["伴手禮"], "highlight": false, "detail": "可快速採買蝦餅。", "links": [] },
-        { "time": "16:05", "name": "Gold Stay Nagoya Sakae", "type": "hotel", "tags": ["取行李"], "highlight": false, "detail": "回飯店取行李/出發去車站。", "links": [] },
-        { "time": "16:50", "name": "名古屋車站", "type": "metro", "tags": ["出發"], "highlight": true, "detail": "進站、找月台、買便當/飲料。", "links": [] },
+        {
+          "time": "16:50",
+          "name": "名古屋站（進站/買便當）",
+          "type": "metro",
+          "tags": [
+            "出發"
+          ],
+          "highlight": true,
+          "detail": "先確認月台，再買便當/飲料。",
+          "links": []
+        },
         {
           "time": "17:06",
           "name": "交通：NOZOMI 246 名古屋 → 東京",
           "type": "train",
-          "tags": ["新幹線", "指定席"],
+          "tags": [
+            "新幹線",
+            "指定席"
+          ],
           "highlight": true,
           "transportRef": "t_nozomi_246_20251223",
           "detail": "N700系 16 両／普通車 Car 5 Seat 1-B/C/D/E。",
           "links": []
         },
-        { "time": "18:45", "name": "東京車站", "type": "metro", "tags": ["抵達"], "highlight": true, "detail": "下車後人流大，先確認飯店路線再逛。", "links": [] },
         {
-          "time": "19:00",
-          "name": "Kirby Cafe Petit Tokyo Station",
-          "type": "food",
-          "tags": ["甜點", "周邊"],
-          "highlight": false,
-          "detail": "視排隊狀況決定是否購買。",
-          "links": [{ "label": "Kirby Cafe（官方）", "url": "https://kirbycafe.jp/" }]
+          "time": "18:45",
+          "name": "東京車站",
+          "type": "metro",
+          "tags": [
+            "抵達"
+          ],
+          "highlight": true,
+          "detail": "東京站人流大，先確認轉乘與飯店路線。",
+          "links": []
         },
-        { "time": "20:03", "name": "東京拉麵街", "type": "food", "tags": ["晚餐備案"], "highlight": false, "detail": "如當天太累，車站內吃完直接回飯店最省力。", "links": [] },
-        { "time": "21:19", "name": "OMO5 東京大塚 by 星野集團", "type": "hotel", "tags": ["入住"], "highlight": true, "detail": "入住、整理行李。", "links": [{ "label": "OMO5 東京大塚（官方）", "url": "https://hoshinoresorts.com/en/hotels/omo5tokyootsuka/" }] },
-        { "time": "21:51", "name": "Yoshiya saine", "type": "shopping", "tags": ["採買"], "highlight": false, "detail": "補買飲料/零食。", "links": [] },
-        { "time": "22:24", "name": "My Basket Otsukaeki North…", "type": "shopping", "tags": ["採買"], "highlight": false, "detail": "更近的補貨點。", "links": [] },
-        { "time": "22:41", "name": "OMO5 東京大塚 by 星野集團", "type": "hotel", "tags": ["回飯店"], "highlight": false, "detail": "回房休息。", "links": [] }
+        {
+          "time": "21:19",
+          "name": "OMO5 東京大塚 by 星野集團",
+          "type": "hotel",
+          "tags": [
+            "入住"
+          ],
+          "highlight": true,
+          "detail": "入住休息。",
+          "links": [
+            {
+              "label": "OMO5 東京大塚（官方）",
+              "url": "https://hoshinoresorts.com/en/hotels/omo5tokyootsuka/"
+            }
+          ]
+        }
       ],
       "paceAssessment": {
         "isTooPacked": true,
-        "note": "上午點位多＋下午趕新幹線；建議名古屋城與熱田神宮二選一，留更多緩衝給交通。"
+        "note": "上午點位＋下午趕車：名古屋景點建議 1–2 個即可，留足交通緩衝。"
       }
     },
     {
       "day": 5,
       "date": "2025-12-24",
-      "weekday": "Wed",
       "title": "三鷹吉卜力美術館＋新宿",
       "city": "Tokyo",
       "spots": [
-        { "time": "08:00", "name": "OMO5 東京大塚 by 星野集團", "type": "hotel", "tags": ["出發"], "highlight": false, "detail": "出門前確認美術館入場時間/票券。", "links": [] },
-        { "time": "09:02", "name": "W COFFEE ダブリューコーヒー/バー", "type": "cafe", "tags": ["咖啡"], "highlight": false, "detail": "早餐/咖啡。", "links": [] },
         {
           "time": "10:42",
           "name": "三鷹之森吉卜力美術館",
           "type": "spot",
-          "tags": ["必看"],
+          "tags": [
+            "必看",
+            "需預約"
+          ],
           "highlight": true,
-          "detail": "需預約購票；建議提早到排隊進場。",
-          "links": [{ "label": "吉卜力美術館（官方）", "url": "https://www.ghibli-museum.jp/en/" }]
+          "detail": "請以你們票券入場時間為準，建議提早到。",
+          "links": [
+            {
+              "label": "吉卜力美術館（官方）",
+              "url": "https://www.ghibli-museum.jp/en/"
+            }
+          ]
         },
-        { "time": "12:13", "name": "新宿區", "type": "area", "tags": ["逛街"], "highlight": false, "detail": "下午購物/散步主區。", "links": [] },
-        { "time": "13:33", "name": "Nara Seimen", "type": "food", "tags": ["午餐"], "highlight": false, "detail": "用餐時間可彈性調整。", "links": [] },
-        { "time": "14:50", "name": "HARE ルミネエスト", "type": "shopping", "tags": ["購物"], "highlight": false, "detail": "逛街重點之一。", "links": [] },
-        { "time": "16:13", "name": "Kenyan Shibuya", "type": "cafe", "tags": ["甜點/咖啡"], "highlight": false, "detail": "若移動到澀谷可當中途休息點。", "links": [] },
-        { "time": "17:51", "name": "OMO5 東京大塚 by 星野集團", "type": "hotel", "tags": ["回飯店"], "highlight": false, "detail": "回飯店休息。", "links": [] }
+        {
+          "time": "12:13",
+          "name": "新宿",
+          "type": "area",
+          "tags": [
+            "逛街"
+          ],
+          "highlight": false,
+          "detail": "購物/散步主區。",
+          "links": []
+        }
       ],
       "paceAssessment": {
         "isTooPacked": false,
-        "note": "整體可控，主要壓力在『美術館時間』，其餘購物點可自由增減。"
+        "note": "壓力點在美術館時段；其餘購物點可自由增減。"
       }
     },
     {
       "day": 6,
       "date": "2025-12-25",
-      "weekday": "Thu",
       "title": "東京迪士尼海洋（整天）",
       "city": "Tokyo",
       "spots": [
-        { "time": "06:00", "name": "OMO5 東京大塚 by 星野集團", "type": "hotel", "tags": ["出發"], "highlight": true, "detail": "建議提早出門，避免入園安檢排隊。", "links": [] },
         {
           "time": "08:02",
           "name": "東京迪士尼海洋",
           "type": "spot",
-          "tags": ["必玩"],
+          "tags": [
+            "必玩"
+          ],
           "highlight": true,
-          "detail": "建議先處理 DPA/預約等（依當天規則），優先熱門設施。",
-          "links": [{ "label": "Tokyo Disney Resort（官方）", "url": "https://www.tokyodisneyresort.jp/en/" }]
-        },
-        { "time": "22:01", "name": "OMO5 東京大塚 by 星野集團", "type": "hotel", "tags": ["回飯店"], "highlight": false, "detail": "回飯店休息。", "links": [] }
+          "detail": "依當天規則處理 DPA/預約，先衝熱門設施。",
+          "links": [
+            {
+              "label": "Tokyo Disney Resort（官方）",
+              "url": "https://www.tokyodisneyresort.jp/en/"
+            }
+          ]
+        }
       ],
       "paceAssessment": {
         "isTooPacked": false,
-        "note": "單一主題日，節奏好掌控；體力消耗大，建議晚餐回程就近解決。"
+        "note": "單一主題日，節奏好掌控；注意體力與回程時間。"
       }
     },
     {
       "day": 7,
       "date": "2025-12-26",
-      "weekday": "Fri",
       "title": "銀座/日本橋/淺草/上野（甜點＋散步）",
       "city": "Tokyo",
       "spots": [
-        { "time": "08:00", "name": "OMO5 東京大塚 by 星野集團", "type": "hotel", "tags": ["出發"], "highlight": false, "detail": "先看當天天氣，決定步行量。", "links": [] },
-        { "time": "09:26", "name": "No.4", "type": "cafe", "tags": ["早午餐"], "highlight": false, "detail": "若排隊長可改其它咖啡店。", "links": [] },
-        { "time": "10:46", "name": "bills Ginza", "type": "food", "tags": ["早午餐"], "highlight": false, "detail": "同區咖啡/早午餐備案。", "links": [] },
-        { "time": "11:50", "name": "noix de beurre Ginza Mitsukoshi…", "type": "food", "tags": ["甜點"], "highlight": true, "detail": "若你們主打甜點，這間可列為當天必吃。", "links": [] },
-        { "time": "12:14", "name": "PUDDING LAB", "type": "food", "tags": ["甜點"], "highlight": false, "detail": "時間不夠可略過。", "links": [] },
-        { "time": "12:38", "name": "覺王山水果大福 弁才天 GINZA SIX店", "type": "food", "tags": ["甜點"], "highlight": true, "detail": "想吃水果大福可當重點之一。", "links": [] },
-
-        { "time": "13:08", "name": "五代目 花山烏冬 銀座店", "type": "food", "tags": ["必吃", "午餐"], "highlight": true, "detail": "當天主餐推薦。", "links": [] },
-        { "time": "14:13", "name": "銀座", "type": "area", "tags": ["逛街"], "highlight": false, "detail": "購物/散步。", "links": [] },
-        { "time": "15:30", "name": "BONGEN COFFEE Tokyo Nihonbashi", "type": "cafe", "tags": ["咖啡"], "highlight": false, "detail": "行程中段休息點。", "links": [] },
-        { "time": "16:14", "name": "Ginza Karen", "type": "shopping", "tags": ["購物"], "highlight": false, "detail": "若偏逛街可加，不逛就略過。", "links": [] },
-        { "time": "17:05", "name": "淺草", "type": "spot", "tags": ["散步"], "highlight": false, "detail": "傍晚人潮仍多，注意回程時間。", "links": [] },
-        { "time": "18:17", "name": "Milk no Ki", "type": "cafe", "tags": ["甜點/飲品"], "highlight": false, "detail": "補充能量。", "links": [] },
-        { "time": "18:57", "name": "上野阿美橫町", "type": "shopping", "tags": ["逛街"], "highlight": false, "detail": "晚段採買/散步。", "links": [] },
-        { "time": "20:26", "name": "OMO5 東京大塚 by 星野集團", "type": "hotel", "tags": ["回飯店"], "highlight": false, "detail": "回飯店休息。", "links": [] }
+        {
+          "time": "11:50",
+          "name": "noix de beurre（銀座）",
+          "type": "food",
+          "tags": [
+            "必吃",
+            "甜點"
+          ],
+          "highlight": true,
+          "detail": "若主打甜點，這間可列必吃。",
+          "links": []
+        },
+        {
+          "time": "12:38",
+          "name": "弁才天（GINZA SIX）水果大福",
+          "type": "food",
+          "tags": [
+            "必吃",
+            "甜點"
+          ],
+          "highlight": true,
+          "detail": "想吃水果大福可當重點之一。",
+          "links": []
+        },
+        {
+          "time": "13:08",
+          "name": "五代目 花山烏冬（銀座）",
+          "type": "food",
+          "tags": [
+            "必吃",
+            "午餐"
+          ],
+          "highlight": true,
+          "detail": "當天主餐推薦。",
+          "links": []
+        },
+        {
+          "time": "17:05",
+          "name": "淺草",
+          "type": "spot",
+          "tags": [
+            "散步"
+          ],
+          "highlight": false,
+          "detail": "傍晚人潮仍多，注意回程。",
+          "links": []
+        },
+        {
+          "time": "18:57",
+          "name": "上野阿美橫町",
+          "type": "shopping",
+          "tags": [
+            "逛街"
+          ],
+          "highlight": false,
+          "detail": "晚段採買/散步。",
+          "links": []
+        }
       ],
       "paceAssessment": {
         "isTooPacked": true,
-        "note": "點位分散（銀座→日本橋→淺草→上野），若想舒服建議『銀座/日本橋』與『淺草/上野』二選一主軸。"
+        "note": "點位分散：建議『銀座/日本橋』與『淺草/上野』二選一主軸，會更舒服。"
       }
     },
     {
       "day": 8,
       "date": "2025-12-27",
-      "weekday": "Sat",
       "title": "川越一日＋成田返台",
       "city": "Tokyo → NRT → TPE",
       "spots": [
-        { "time": "07:00", "name": "OMO5 東京大塚 by 星野集團", "type": "hotel", "tags": ["出發"], "highlight": true, "detail": "最後一天請把行李/退房流程先確認好。", "links": [] },
-        { "time": "08:17", "name": "東武ツーリストインフォメーションセン…", "type": "metro", "tags": ["集合/購票"], "highlight": false, "detail": "若需買票或問路可在此處理。", "links": [] },
-        { "time": "09:22", "name": "Soup Stock Tokyo", "type": "food", "tags": ["早餐"], "highlight": false, "detail": "快速吃完出發去川越。", "links": [] },
-
         {
           "time": "11:32",
           "name": "川越冰川神社",
           "type": "spot",
-          "tags": ["必看", "神社"],
+          "tags": [
+            "必看"
+          ],
           "highlight": true,
-          "detail": "川越人氣點，建議先來避免人潮。",
-          "links": [{ "label": "川越氷川神社（官方）", "url": "https://www.kawagoehikawa.jp/" }]
+          "detail": "人氣點，建議先來。",
+          "links": [
+            {
+              "label": "川越氷川神社（官方）",
+              "url": "https://www.kawagoehikawa.jp/"
+            }
+          ]
         },
-        { "time": "12:32", "name": "喜多院", "type": "spot", "tags": ["寺院"], "highlight": false, "detail": "可視時間停留。", "links": [] },
-        { "time": "12:52", "name": "Chiikawa Mogumogu Hompo…", "type": "shopping", "tags": ["周邊"], "highlight": false, "detail": "若排隊太久建議略過，避免壓縮回程。", "links": [] },
-
-        { "time": "13:55", "name": "Arai Buhei Shoten", "type": "shopping", "tags": ["小店"], "highlight": false, "detail": "走逛補充點。", "links": [] },
-        { "time": "14:06", "name": "Miffy Kitchen & Bakery KAWAGOE", "type": "food", "tags": ["甜點"], "highlight": true, "detail": "可當下午茶重點。", "links": [] },
-        { "time": "14:07", "name": "藥師神社", "type": "spot", "tags": ["神社"], "highlight": false, "detail": "順路小點。", "links": [] },
-        { "time": "14:39", "name": "時之鐘", "type": "spot", "tags": ["必看", "地標"], "highlight": true, "detail": "川越代表地標，務必留拍照時間。", "links": [] },
-        { "time": "14:50", "name": "星巴克 川越時鐘小路店", "type": "cafe", "tags": ["拍照", "休息"], "highlight": false, "detail": "人多時可外帶。", "links": [] },
-        { "time": "15:12", "name": "小江戶川越一番街商店街（藏造老屋街道）", "type": "spot", "tags": ["必逛"], "highlight": true, "detail": "主要散步購物路線，建議留最完整時間。", "links": [] },
-        { "time": "15:25", "name": "川越布丁", "type": "food", "tags": ["甜點"], "highlight": false, "detail": "時間夠再吃，避免甜點排隊互相卡。", "links": [] },
         {
-          "time": "15:38",
-          "name": "鰻魚飯老店 小川菊",
-          "type": "food",
-          "tags": ["必吃", "鰻魚"],
+          "time": "14:39",
+          "name": "時之鐘",
+          "type": "spot",
+          "tags": [
+            "必看",
+            "地標"
+          ],
           "highlight": true,
-          "detail": "若排隊過久，建議改成外帶/備案餐，避免影響去機場時間。",
-          "links": [{ "label": "小川菊（店家資訊）", "url": "https://tabelog.com/saitama/A1103/A110303/11000014/" }]
+          "detail": "川越代表地標，務必留拍照時間。",
+          "links": []
         },
-        { "time": "16:39", "name": "大正浪漫夢通", "type": "spot", "tags": ["散步"], "highlight": false, "detail": "順路拍照。", "links": [] },
-        { "time": "16:53", "name": "蓮馨寺", "type": "spot", "tags": ["寺院"], "highlight": false, "detail": "順路小點。", "links": [] },
-        { "time": "17:15", "name": "川越 熊野神社", "type": "spot", "tags": ["神社"], "highlight": false, "detail": "若時間不足可略過。", "links": [] },
-        { "time": "18:41", "name": "RANMEISYA SWEETS FACTORY…", "type": "food", "tags": ["甜點"], "highlight": false, "detail": "回程前最後甜點；若趕時間不建議再排。", "links": [] },
-
-        { "time": "20:27", "name": "NRT・成田國際機場", "type": "flight", "tags": ["回國"], "highlight": true, "detail": "建議至少預留 2.5–3 小時辦理登機/退稅/安檢。", "links": [] },
-        { "time": "23:25", "name": "TPE・臺灣桃園國際機場", "type": "flight", "tags": ["抵達"], "highlight": true, "detail": "行程結束。", "links": [] }
+        {
+          "time": "15:12",
+          "name": "小江戶川越一番街（藏造老屋街）",
+          "type": "spot",
+          "tags": [
+            "必逛"
+          ],
+          "highlight": true,
+          "detail": "主要散步購物路線。",
+          "links": []
+        },
+        {
+          "time": "20:27",
+          "name": "NRT・成田國際機場",
+          "type": "flight",
+          "tags": [
+            "回國"
+          ],
+          "highlight": true,
+          "detail": "建議預留 2.5–3 小時辦理登機/安檢。",
+          "links": []
+        },
+        {
+          "time": "23:25",
+          "name": "TPE・臺灣桃園國際機場",
+          "type": "flight",
+          "tags": [
+            "抵達"
+          ],
+          "highlight": true,
+          "detail": "行程結束。",
+          "links": []
+        }
       ],
       "paceAssessment": {
         "isTooPacked": true,
-        "note": "川越點位多＋晚間要去機場；建議只鎖定『冰川神社＋時之鐘/一番街＋小川菊』三核心，其餘全當備案。"
+        "note": "川越＋晚間要去機場：只鎖定 2–3 核心點，其餘視時間加減。"
       }
     }
   ]
