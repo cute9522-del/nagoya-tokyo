@@ -7,7 +7,7 @@
     },
     "timezone": "Asia/Taipei",
     "theme": {
-      "bg": "#fff7d6",
+      "bg": "#efeed7",
       "border": "#422615"
     },
     "weatherProvider": "Open-Meteo (current weather via lat/lon)"
