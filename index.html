@@ -1,112 +1,437 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Nagoya → Tokyo Trip</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>名古屋 → 東京 8日旅遊小工具</title>
 <style>
 :root{
   --bg:#fff7d6;
-  --text:#422615;
-  --text-sub:rgba(66,38,21,.65);
-  --line:rgba(66,38,21,.2);
+  --border:#422615;
+  --card:rgba(255,255,255,0.48);
+  --cardHi:rgba(255,255,255,0.68);
+  --radius:14px;
+  --bw:1px;
+
+  --text:rgba(38,34,30,0.92);
+  --text2:rgba(38,34,30,0.66);
+  --muted:rgba(38,34,30,0.48);
+
+  --lineW:3px;
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+
+  --modalBg: rgba(0,0,0,.34);
+  --modalCardBg: rgba(255,255,255,.92);
+  --modalBorder: rgba(0,0,0,.08);
 }
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Noto Sans TC",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-header{
-  position:sticky;top:0;z-index:10;
-  background:rgba(255,247,214,.95);
-  border-bottom:1px solid var(--line);
-}
-.nav{
-  display:flex;align-items:center;gap:8px;
-  padding:10px 12px;
-}
-.nav .menu{font-weight:600}
-.nav .days{
-  display:flex;gap:10px;overflow-x:auto;
-}
-.nav .days button{
-  background:none;border:none;
-  color:var(--text-sub);
-  font-size:14px;
-}
-.section{padding:20px 16px}
-.cover{
-  height:220px;border-radius:14px;
-  background:#eee center/cover no-repeat;
-}
-.h1{font-size:20px;font-weight:700;margin:12px 0 4px}
-.sub{color:var(--text-sub);font-size:14px}
-.directory{
-  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;
-}
-.dir-card{
-  border-radius:16px;overflow:hidden;
-  background:#f0e7c6;
-  height:160px;
-  display:flex;align-items:flex-end;
-}
-.dir-card span{
-  background:rgba(255,255,255,.7);
-  margin:10px;padding:6px 10px;border-radius:10px;
-}
-.day-list{margin-top:20px}
-.day-item{
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:14px;margin-bottom:12px;
-  background:rgba(255,255,255,.75);
-}
-.day-item a{
-  display:inline-block;margin-top:6px;
-  color:var(--text);text-decoration:none;font-weight:600;
-}
+html,body{height:100%}
+body{margin:0; font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Hiragino Sans", "Helvetica Neue", Arial;
+  background: var(--bg); color: var(--text);}
+
+.header{position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px);
+  background: color-mix(in oklab, var(--bg), rgba(255,255,255,.35) 40%);
+  border-bottom: 1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.55) 55%);}
+.headerInner{max-width: 860px; margin:0 auto; padding: 14px 14px 12px;}
+.hTitle{display:flex; align-items:baseline; gap:10px;}
+.hTitle h1{font-size:18px; margin:0;}
+.hTitle .sub{font-size:12px; color:var(--muted);}
+
+.tabs{display:flex; gap:8px; margin-top:10px;}
+.tab{flex:1; border:1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.65) 55%);
+  background: rgba(255,255,255,.20); border-radius:999px; padding:10px 12px; font-size:13px; color: var(--text2);}
+.tab.active{background: rgba(255,255,255,.40); color:var(--text);}
+
+.selector{margin-top:10px; display:flex; gap:8px; overflow:auto; padding-bottom:2px; -webkit-overflow-scrolling: touch;}
+.chip{white-space:nowrap; border:1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.65) 55%);
+  background: rgba(255,255,255,.18); border-radius:999px; padding: 8px 10px; font-size:12px; color: var(--text2);}
+.chip.active{background: rgba(255,255,255,.38); color: var(--text);}
+
+.wrap{max-width: 860px; margin:0 auto; padding: 18px 14px 90px;}
+.grid{display:grid; gap:10px;}
+
+.card{position:relative; background: var(--card);
+  border: var(--bw) solid color-mix(in oklab, var(--border), rgba(255,255,255,.65) 55%);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 12px 12px 12px calc(12px + var(--lineW)); overflow:hidden;}
+.card::before{content:""; position:absolute; left:0; top:0; bottom:0; width: var(--lineW);
+  background: var(--typeLine, rgba(120,120,120,.60));}
+.card.highlight{background: var(--cardHi);}
+
+.row{display:flex; align-items:flex-start; justify-content:space-between; gap:12px;}
+.time{min-width:58px; font-size:12px; color: var(--muted);}
+.title2{font-size:15px; margin:0; line-height:1.25;}
+.kindLabel{margin-top:4px; font-size:11px; color: var(--muted);}
+.meta{margin-top:6px; display:flex; flex-wrap:wrap; gap:6px;}
+.tag{font-size:11px; padding:4px 8px; border-radius:999px; background: rgba(255,255,255,.26); border:1px solid rgba(0,0,0,.05); color: var(--text2);}
+.tag.strong{font-weight:650; color: var(--text); background: rgba(255,255,255,.38);}
+
+.actions{display:flex; gap:8px; margin-top:10px;}
+.btn{flex:1; border:1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.70) 60%);
+  background: rgba(255,255,255,.25); border-radius:10px; padding:10px 10px; font-size:13px; color: var(--text);
+  text-align:center; text-decoration:none;}
+.btn.secondary{color: var(--text2);}
+.small{font-size:12px; color: var(--text2); line-height:1.5; margin-top:8px;}
+
+.footerBar{position:fixed; left:0; right:0; bottom:0; padding:10px 14px 16px;
+  background: color-mix(in oklab, var(--bg), rgba(255,255,255,.40) 40%);
+  border-top: 1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.65) 55%);
+  backdrop-filter: blur(10px);}
+.footerInner{max-width:860px; margin:0 auto; display:flex; gap:10px;}
+.search{flex:1; border-radius:12px; border:1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.65) 55%);
+  background: rgba(255,255,255,.26); padding:12px 12px; font-size:14px; outline:none; color: var(--text);}
+.pillBtn{border-radius:12px; border:1px solid color-mix(in oklab, var(--border), rgba(255,255,255,.65) 55%);
+  background: rgba(255,255,255,.26); padding:12px 12px; font-size:14px;}
+
+/* Floating modal */
+.modalBg{position:fixed; inset:0; background: var(--modalBg); display:none; align-items:center; justify-content:center; z-index:50; padding: 16px;}
+.modalBg.show{display:flex;}
+.modalCard{width:min(860px, 100%); max-height: 84vh; background: var(--modalCardBg);
+  border: 1px solid var(--modalBorder); border-radius: 18px; box-shadow: 0 18px 60px rgba(0,0,0,.24);
+  overflow:hidden; transform: translateY(0px); transition: transform .18s ease;}
+.modalHeader{position:relative; padding: 10px 14px 10px calc(14px + 6px); border-bottom: 1px solid rgba(0,0,0,.06);}
+.modalHeader::before{content:""; position:absolute; left:0; top:0; bottom:0; width: 6px; background: var(--accent, rgba(120,120,120,.70));}
+.grabberWrap{display:flex; justify-content:center; padding: 10px 0 0;}
+.grabber{width: 60px; height: 5px; border-radius: 999px; background: rgba(0,0,0,.18);}
+.titleRow{display:flex; align-items:flex-start; justify-content:space-between; gap: 10px; padding-top: 6px;}
+.mSub{font-size:12px; color: var(--muted);}
+.mTitle{margin: 2px 0 0; font-size: 16px; line-height: 1.2;}
+.badges{display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;}
+.badge{font-size:11px; padding: 5px 8px; border-radius:999px; background: rgba(255,255,255,.52);
+  border:1px solid rgba(0,0,0,.06); color: var(--text2); display:inline-flex; align-items:center; gap:5px;}
+.badge strong{color: var(--text);}
+
+.modalBody{padding: 12px 14px 6px; overflow:auto; max-height: calc(84vh - 170px); -webkit-overflow-scrolling: touch;}
+.sectionTitle{margin-top: 12px; font-size: 12px; letter-spacing:.03em; color: var(--muted); font-weight:650;}
+.block{margin-top: 8px; font-size: 13px; color: var(--text2); line-height:1.6;}
+.list{margin: 6px 0 0; padding-left: 18px; color: var(--text2);}
+.list li{margin: 4px 0;}
+
+.modalBottom{position: sticky; bottom:0; padding: 10px 14px 14px; border-top: 1px solid rgba(0,0,0,.06);
+  background: color-mix(in oklab, var(--modalCardBg), rgba(255,255,255,.50) 40%);
+  backdrop-filter: blur(10px);}
+.modalActions{display:flex; gap: 8px; flex-wrap:wrap;}
+.modalActions .btn{flex: 1 1 120px;}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="nav">
-    <div class="menu">目錄</div>
-    <div class="days">
-      <button>Day1</button><button>Day2</button><button>Day3</button><button>Day4</button>
-      <button>Day5</button><button>Day6</button><button>Day7</button><button>Day8</button>
+<div class="header">
+  <div class="headerInner">
+    <div class="hTitle">
+      <h1 id="appTitle">名古屋 → 東京 8日旅遊小工具</h1>
+      <div class="sub">2025-12-20 — 2025-12-27</div>
     </div>
+    <div class="tabs" id="tabs"></div>
+    <div class="selector" id="selector"></div>
   </div>
-</header>
+</div>
 
-<section class="section">
-  <div class="cover"></div>
-  <div class="h1">Nagoya → Tokyo Trip</div>
-  <div class="sub">2025.12.20 – 2025.12.27</div>
-</section>
+<div class="wrap"><div id="view"></div></div>
 
-<section class="section">
-  <div class="h1">目錄</div>
-  <div class="directory">
-    <div class="dir-card"><span>Nagoya</span></div>
-    <div class="dir-card"><span>Tokyo</span></div>
+<div class="footerBar">
+  <div class="footerInner">
+    <input id="q" class="search" placeholder="搜尋（例：蓬萊軒、吉卜力、新幹線）" />
+    <button id="topBtn" class="pillBtn" title="回到頂部">↑</button>
   </div>
+</div>
 
-  <div class="day-list">
-    <div class="day-item">
-      <div><strong>Day 1</strong> · Nagoya</div>
-      <div class="sub">抵達名古屋・大須／榮商圈</div>
-      <a href="#day1">前往 Day 1 行程 →</a>
+<div class="modalBg" id="modalBg" role="dialog" aria-modal="true">
+  <div class="modalCard" id="modalCard"></div>
+</div>
+
+<script>
+const TYPE_COLORS = {"flight": "rgba(196,116,116,0.78)", "train": "rgba(108,133,155,0.78)", "bus": "rgba(146,124,102,0.78)", "metro": "rgba(120,120,120,0.55)", "walk": "rgba(120,120,120,0.45)", "hotel": "rgba(132,116,156,0.78)", "food": "rgba(186,140,98,0.78)", "cafe": "rgba(170,140,122,0.78)", "spot": "rgba(126,152,126,0.78)", "shopping": "rgba(162,128,150,0.78)", "view": "rgba(140,150,176,0.78)", "area": "rgba(140,140,140,0.78)"};
+const TYPE_LABEL = {
+  flight:"航班", train:"交通", bus:"交通", metro:"交通", walk:"步行",
+  hotel:"住宿", food:"餐廳", cafe:"咖啡", spot:"景點", shopping:"購物", view:"景觀", area:"區域"
+};
+let DATA=null, ACTIVE_TAB="itinerary", ACTIVE_DAY=1, ACTIVE_ESS="flights", QUERY="";
+let dragStartY=0, dragCurrentY=0, dragging=false;
+
+function el(html){const t=document.createElement("template"); t.innerHTML=html.trim(); return t.content.firstElementChild;}
+function safe(s){return (s??"").toString();}
+function makeGoogleMapsNav(name){const q=encodeURIComponent(name); return `https://www.google.com/maps/search/?api=1&query=${q}`; }
+function makeSearchOfficial(name){const q=encodeURIComponent(name + " 公式サイト"); return `https://www.google.com/search?q=${q}`; }
+function typeLineColor(type){return TYPE_COLORS[type] || "rgba(120,120,120,.70)"; }
+function typeLabel(type){return TYPE_LABEL[type] || "資訊";}
+
+function renderTabs(){
+  const tabs=document.getElementById("tabs"); tabs.innerHTML="";
+  (DATA.tabs||[]).forEach(t=>{
+    const b=el(`<button class="tab ${t.id===ACTIVE_TAB?'active':''}">${t.label}</button>`);
+    b.onclick=()=>{ACTIVE_TAB=t.id; render(); window.scrollTo({top:0, behavior:"smooth"});};
+    tabs.appendChild(b);
+  });
+}
+function renderSelector(){
+  const sel=document.getElementById("selector"); sel.innerHTML="";
+  if(ACTIVE_TAB==="itinerary"){
+    (DATA.days||[]).forEach(d=>{
+      const c=el(`<button class="chip ${d.day===ACTIVE_DAY?'active':''}">Day ${d.day}</button>`);
+      c.onclick=()=>{ACTIVE_DAY=d.day; render(); window.scrollTo({top:0, behavior:"smooth"});};
+      sel.appendChild(c);
+    });
+  } else if(ACTIVE_TAB==="essentials"){
+    [["flights","航班"],["lodgings","住宿"],["emergency","緊急"],["budget","預算"]].forEach(([id,label])=>{
+      const c=el(`<button class="chip ${id===ACTIVE_ESS?'active':''}">${label}</button>`);
+      c.onclick=()=>{ACTIVE_ESS=id; render(); window.scrollTo({top:0, behavior:"smooth"});};
+      sel.appendChild(c);
+    });
+  } else sel.appendChild(el(`<div style="height:2px"></div>`));
+}
+function tagHtml(tags){
+  return (tags||[]).map(x=>{
+    const strong=(x.includes("必")||x.includes("需")||x.includes("指定")||x.includes("預約"));
+    return `<span class="tag ${strong?'strong':''}">${x}</span>`;
+  }).join("");
+}
+function cardHtml(item){
+  const t=item.type||"spot", isHi=!!item.highlight;
+  const name=safe(item.name), time=safe(item.time), detail=safe(item.detail), kind=typeLabel(t);
+  const official=(item.links||[]).find(l=>(l.label||"").includes("官方"));
+  const officialUrl=official?.url || item.officialLink || "";
+  const navUrl=makeGoogleMapsNav(name), fallbackOfficial=makeSearchOfficial(name);
+  return `
+  <div class="card ${isHi?'highlight':''}" style="--typeLine:${typeLineColor(t)}">
+    <div class="row">
+      <div class="time">${time}</div>
+      <div style="flex:1">
+        <div class="title2">${name}</div>
+        <div class="kindLabel">分類：${kind}</div>
+        <div class="meta">${tagHtml(item.tags)}</div>
+      </div>
+      <div><button class="btn secondary" style="padding:8px 10px; font-size:12px" data-open="1">詳細</button></div>
     </div>
-    <div class="day-item">
-      <div><strong>Day 2</strong> · Takayama / Shirakawa-go</div>
-      <div class="sub">高山・白川鄉一日團</div>
-      <a href="#day2">前往 Day 2 行程 →</a>
+    <div class="actions">
+      <a class="btn" href="${navUrl}" target="_blank" rel="noreferrer">導航</a>
+      ${officialUrl ? `<a class="btn secondary" href="${officialUrl}" target="_blank" rel="noreferrer">官方</a>` : `<a class="btn secondary" href="${fallbackOfficial}" target="_blank" rel="noreferrer">搜尋官網</a>`}
     </div>
-  </div>
-</section>
+    ${detail ? `<div class="small">${detail}</div>` : ""}
+  </div>`;
+}
 
+function buildBadges(tags,type){
+  const t=(tags||[]).join(" "); const badges=[];
+  if(t.includes("必吃")) badges.push({label:"必吃", icon:"🍴"});
+  if(t.includes("必看")||t.includes("必玩")||t.includes("必逛")) badges.push({label:"必看", icon:"👀"});
+  if(t.includes("必買")) badges.push({label:"必買", icon:"🛍️"});
+  if(t.includes("需預約")||t.includes("預約")||t.includes("指定席")) badges.push({label:"需確認", icon:"⏱️"});
+  if(badges.length===0) badges.push({label:typeLabel(type), icon:"•"});
+  return badges;
+}
+function pickAccent(tags,type){
+  const t=(tags||[]).join(" ");
+  if(t.includes("必吃")) return typeLineColor("food");
+  if(t.includes("必看")||t.includes("必玩")||t.includes("必逛")) return typeLineColor("spot");
+  if(t.includes("必買")) return typeLineColor("shopping");
+  return typeLineColor(type);
+}
+function section(title, html){ if(!html) return ""; return `<div class="sectionTitle">${title}</div><div class="block">${html}</div>`; }
+function listSection(title, arr){ if(!arr||!arr.length) return ""; const li=arr.map(x=>`<li>${x}</li>`).join(""); return `<div class="sectionTitle">${title}</div><ul class="list">${li}</ul>`; }
+
+let __scrollY = 0;
+function lockBodyScroll(){
+  __scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${__scrollY}px`;
+  document.body.style.left = "0";
+  document.body.style.right = "0";
+  document.body.style.width = "100%";
+  document.body.style.overflow = "hidden";
+}
+function unlockBodyScroll(){
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.left = "";
+  document.body.style.right = "";
+  document.body.style.width = "";
+  document.body.style.overflow = "";
+  window.scrollTo(0, __scrollY);
+}
+
+function openModal(opts){
+  const bg=document.getElementById("modalBg");
+  const card=document.getElementById("modalCard");
+  const title=opts.title||"", subtitle=opts.subtitle||"", tags=opts.tags||[], type=opts.type||"spot";
+  const accent=opts.accent || pickAccent(tags,type);
+  const badges=buildBadges(tags,type);
+  const badgesHtml=badges.map(b=>`<span class="badge"><span>${b.icon}</span><strong>${b.label}</strong></span>`).join("");
+  const more=opts.more||{};
+  const body=[
+    section("簡介", opts.summary||""),
+    listSection("必點菜單 / 推薦吃法", more.menu),
+    listSection("推薦購買 / 伴手禮", more.buy),
+    listSection("評價重點", more.reviews),
+    listSection("小提醒", more.tips),
+    section("補充資訊", opts.extra||"")
+  ].join("");
+  const links=opts.links||[];
+  const linksHtml=links.map(l=>`<a class="btn ${l.primary?'':'secondary'}" href="${l.url}" target="_blank" rel="noreferrer">${l.label}</a>`).join("");
+  card.style.setProperty("--accent", accent);
+  card.innerHTML=`
+    <div class="grabberWrap" data-grab="1"><div class="grabber"></div></div>
+    <div class="modalHeader" data-grab="1">
+      <div class="titleRow">
+        <div><div class="mSub">${subtitle}</div><div class="mTitle">${title}</div></div>
+        <div class="badges">${badgesHtml}</div>
+      </div>
+    </div>
+    <div class="modalBody" id="modalBody">${body}</div>
+    <div class="modalBottom">
+      <div class="modalActions">
+        ${linksHtml}
+        <button class="btn secondary" id="closeBtn" type="button">關閉</button>
+      </div>
+    </div>`;
+  bg.classList.add("show");
+  lockBodyScroll();
+  document.getElementById("closeBtn").onclick=closeModal;
+  bg.onclick=(e)=>{ if(e.target===bg) closeModal(); };
+  const grabs=card.querySelectorAll('[data-grab="1"]');
+  grabs.forEach(g=>{
+    g.addEventListener("touchstart", onTouchStart, {passive:true});
+    g.addEventListener("touchmove", onTouchMove, {passive:false});
+    g.addEventListener("touchend", onTouchEnd, {passive:true});
+  });
+}
+function closeModal(){ const bg=document.getElementById("modalBg"); const card=document.getElementById("modalCard");
+  card.style.transform="translateY(0px)"; bg.classList.remove("show"); unlockBodyScroll(); }
+
+function onTouchStart(e){ dragging=true; dragStartY=e.touches[0].clientY; dragCurrentY=dragStartY; }
+function onTouchMove(e){ if(!dragging) return; dragCurrentY=e.touches[0].clientY;
+  const dyUp=Math.max(0, dragStartY - dragCurrentY); if(dyUp>0) e.preventDefault();
+  document.getElementById("modalCard").style.transform = `translateY(-${dyUp}px)`; }
+function onTouchEnd(){ if(!dragging) return; dragging=false;
+  const dyUp=Math.max(0, dragStartY - dragCurrentY);
+  const card=document.getElementById("modalCard");
+  if(dyUp>90) closeModal(); else card.style.transform="translateY(0px)"; }
+
+function matchQuery(s){ if(!QUERY) return true; const q=QUERY.toLowerCase(); return (s||"").toLowerCase().includes(q); }
+
+function renderItinerary(){
+  const view=document.getElementById("view"); view.innerHTML="";
+  const day=(DATA.days||[]).find(d=>d.day===ACTIVE_DAY); if(!day) return;
+  const list=(day.spots||[]).filter(x=> !QUERY || matchQuery(x.name) || matchQuery((x.tags||[]).join(" ")) || matchQuery(x.detail||""));
+  view.appendChild(el(`<div class="card" style="--typeLine: rgba(120,120,120,.45)">
+    <div class="title2">Day ${day.day} · ${day.date}</div>
+    <div class="small">${day.title}<br><span style="color:var(--muted)">${day.city||""}</span></div>
+  </div>`));
+  view.appendChild(el('<div style="height:10px"></div>'));
+  const grid=el(`<div class="grid"></div>`);
+  list.forEach(item=>{
+    const node=el(cardHtml(item));
+    node.querySelector('[data-open="1"]').onclick=()=>{
+      let extra="";
+      if(item.transportRef){ const tr=(DATA.transports||[]).find(x=>x.id===item.transportRef);
+        if(tr){ extra += `<b>交通資訊</b><br>`;
+          if(tr.route) extra += `路線：${tr.route}<br>`;
+          if(tr.departureDate) extra += `日期：${tr.departureDate}<br>`;
+          if(tr.from && tr.to) extra += `時間：${tr.from.time} → ${tr.to.time}<br>`;
+          if(tr.train){ extra += `車次：${tr.train.name}（${tr.train.series} / ${tr.train.cars} 両 / ${tr.train.class}）<br>`;
+            if(tr.train.seats?.length) extra += `座位：${tr.train.seats.join(", ")}<br>`; }
+          if(tr.notes?.length) extra += `<br><b>提醒</b><br>${tr.notes.map(n=>"• "+n).join("<br>")}`;
+        }
+      }
+      const links=[];
+      (item.links||[]).forEach(l=>links.push({label:l.label, url:l.url, primary:false}));
+      if(item.officialLink) links.push({label:"官方", url:item.officialLink, primary:false});
+      links.push({label:"導航", url: makeGoogleMapsNav(item.name), primary:true});
+      if(!links.some(l=>(l.label||"").includes("官方"))) links.push({label:"搜尋官網", url: makeSearchOfficial(item.name), primary:false});
+      openModal({
+        title:item.name,
+        subtitle:`${day.date} · Day ${day.day} · ${typeLabel(item.type||"spot")}`,
+        tags:item.tags||[],
+        type:item.type||"spot",
+        accent:pickAccent(item.tags||[], item.type||"spot"),
+        summary:item.detail||"",
+        more:item.detailMore||{},
+        extra:extra,
+        links:links
+      });
+    };
+    grid.appendChild(node);
+  });
+  view.appendChild(grid);
+}
+
+function renderTransport(){
+  const view=document.getElementById("view"); view.innerHTML="";
+  const list=(DATA.transports||[]).filter(t=> !QUERY || matchQuery(t.title) || matchQuery(t.route||"") || matchQuery(JSON.stringify(t)));
+  if(list.length===0){ view.appendChild(el(`<div class="card" style="--typeLine: rgba(120,120,120,.45)"><div class="title2">找不到交通資訊</div></div>`)); return; }
+  const grid=el(`<div class="grid"></div>`);
+  list.forEach(tr=>{
+    const blocks=[];
+    if(tr.route) blocks.push(`路線：${tr.route}`);
+    if(tr.departureDate) blocks.push(`日期：${tr.departureDate}`);
+    if(tr.from && tr.to) blocks.push(`時間：${tr.from.name} ${tr.from.time} → ${tr.to.name} ${tr.to.time}`);
+    if(tr.train){ blocks.push(`車次：${tr.train.name}（${tr.train.series} / ${tr.train.cars} 両 / ${tr.train.class}）`);
+      if(tr.train.seats?.length) blocks.push(`座位：${tr.train.seats.join(", ")}`); }
+    if(tr.notes?.length) blocks.push(`提醒：<br>${tr.notes.map(n=>"• "+n).join("<br>")}`);
+    const node=el(`<div class="card" style="--typeLine:${typeLineColor(tr.mode)}">
+      <div class="row">
+        <div class="time">${(tr.mode||"").toUpperCase()}</div>
+        <div style="flex:1">
+          <div class="title2">${tr.title}</div>
+          <div class="kindLabel">分類：${typeLabel(tr.mode||"train")}</div>
+          <div class="small">${blocks.join("<br>")}</div>
+        </div>
+        <div><button class="btn secondary" style="padding:8px 10px; font-size:12px" data-open="1">詳細</button></div>
+      </div>
+    </div>`);
+    node.querySelector('[data-open="1"]').onclick=()=>openModal({
+      title: tr.title,
+      subtitle: tr.operator || "交通",
+      tags:["交通"],
+      type: tr.mode||"train",
+      summary: blocks.join("<br>"),
+      more:{},
+      extra:"",
+      links:(tr.links||[]).map(l=>({label:l.label, url:l.url, primary:true}))
+    });
+    grid.appendChild(node);
+  });
+  view.appendChild(grid);
+}
+
+function renderEssentials(){
+  const view=document.getElementById("view"); view.innerHTML="";
+  const e=DATA.essentials||{};
+  const grid=el(`<div class="grid"></div>`);
+  const addCard=(type,title,bodyHtml)=>{
+    const node=el(`<div class="card" style="--typeLine:${typeLineColor(type)}">
+      <div class="title2">${title}</div>
+      <div class="kindLabel">分類：${typeLabel(type)}</div>
+      <div class="small">${bodyHtml}</div>
+      <div class="actions"><button class="btn secondary" data-open="1">詳細</button></div>
+    </div>`);
+    node.querySelector('[data-open="1"]').onclick=()=>openModal({
+      title, subtitle:"航班/住宿", tags:[title], type,
+      summary: bodyHtml, more:{}, extra:"",
+      links:[{label:"關閉", url:"#", primary:true}]
+    });
+    grid.appendChild(node);
+  };
+  if(ACTIVE_ESS==="flights"){ const rows=(e.flights||[]).map(f=>`• ${f.direction}：${f.date} <b>${f.flightNo}</b>（${f.from} → ${f.to}）`).join("<br>") || "（未填）"; addCard("flight","航班資訊", rows); }
+  else if(ACTIVE_ESS==="lodgings"){ const rows=(e.lodgings||[]).map(l=>`• ${l.city}：<b>${l.name}</b><br><span style="color:var(--muted)">${l.address}</span>`).join("<br><br>") || "（未填）"; addCard("hotel","住宿資訊", rows); }
+  else if(ACTIVE_ESS==="emergency"){ const rows=(e.emergency||[]).map(x=>`• ${x.label}：<b>${x.value}</b>`).join("<br>") || "（未填）"; addCard("metro","緊急聯絡", rows); }
+  else { const b=e.budgetTemplate||{}; const rows=`幣別：${b.currencyBase||"JPY"}<br>分類：${(b.categories||[]).join("、")}<br><br>建議：每天睡前 3 分鐘，先把「交通/餐飲/門票/購物」四類記完即可。`; addCard("metro","記帳／預算表（模板）", rows); }
+  view.appendChild(grid);
+}
+
+function render(){ renderTabs(); renderSelector();
+  if(ACTIVE_TAB==="itinerary") renderItinerary();
+  else if(ACTIVE_TAB==="transport") renderTransport();
+  else renderEssentials();
+}
+
+async function load(){ const res=await fetch("./itinerary.json", {cache:"no-store"}); DATA=await res.json();
+  document.getElementById("appTitle").textContent = DATA.meta?.appTitle || "Trip"; render(); }
+
+document.getElementById("q").addEventListener("input", e=>{QUERY=e.target.value.trim(); render();});
+document.getElementById("topBtn").onclick=()=>window.scrollTo({top:0, behavior:"smooth"});
+load().catch(err=>{ document.getElementById("view").innerHTML = `<div class="card" style="--typeLine: rgba(120,120,120,.45)">
+  <div class="title2">資料載入失敗</div>
+  <div class="small">請確認 itinerary.json 與 index.html 在同一層。<br><span style="color:var(--muted)">${String(err)}</span></div></div>`; });
+</script>
 </body>
 </html>

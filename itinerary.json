@@ -1,7 +1,7 @@
 {
   "meta": {
     "appTitle": "名古屋 → 東京 8日旅遊小工具",
-    "version": "v6_5-weather-restored",
+    "version": "v6-day-selector-expanded",
     "locale": "zh-Hant-TW",
     "timezone": "Asia/Taipei",
     "dateRange": {
@@ -42,10 +42,6 @@
     }
   },
   "tabs": [
-    {
-      "id": "catalog",
-      "label": "目錄"
-    },
     {
       "id": "itinerary",
       "label": "行程"
@@ -176,15 +172,13 @@
       "spots": [
         {
           "time": "03:00",
-          "name": "台中-桃園機場接送",
+          "name": "市政府",
           "type": "metro",
           "tags": [
             "出發"
           ],
           "highlight": false,
-          "detail": "由台中搭乘機場接送前往桃園國際機場。
-建議接送時間至少預留 起飛前 3.5–4 小時，
-避免國際線報到與安檢壓力。上車前確認護照、錢包、手機、充電線是否齊全。",
+          "detail": "集合/出門。",
           "links": []
         },
         {
@@ -260,8 +254,7 @@
             "reviews": [
               "名古屋代表喫茶之一，早上常客多；越早越順。"
             ]
-          },
-          "menuImages": []
+          }
         },
         {
           "time": "14:15",
@@ -272,8 +265,7 @@
           ],
           "highlight": false,
           "detail": "大須周邊散步點。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "14:51",
@@ -284,8 +276,7 @@
           ],
           "highlight": false,
           "detail": "小吃、雜貨、二手。",
-          "links": [],
-          "buyImages": []
+          "links": []
         },
         {
           "time": "16:10",
@@ -296,8 +287,7 @@
           ],
           "highlight": false,
           "detail": "移動至榮商圈。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "16:24",
@@ -326,8 +316,7 @@
             "reviews": [
               "以份量大、甜度不膩著稱；多人分食更剛好。"
             ]
-          },
-          "menuImages": []
+          }
         },
         {
           "time": "17:02",
@@ -338,8 +327,7 @@
           ],
           "highlight": false,
           "detail": "榮商場。",
-          "links": [],
-          "buyImages": []
+          "links": []
         },
         {
           "time": "18:18",
@@ -350,8 +338,7 @@
           ],
           "highlight": false,
           "detail": "潮流品牌集中。",
-          "links": [],
-          "buyImages": []
+          "links": []
         },
         {
           "time": "19:33",
@@ -362,8 +349,7 @@
           ],
           "highlight": false,
           "detail": "雨天也好逛。",
-          "links": [],
-          "buyImages": []
+          "links": []
         },
         {
           "time": "20:37",
@@ -374,24 +360,7 @@
           ],
           "highlight": false,
           "detail": "補貨/伴手禮。",
-          "links": [],
-          "detailMore": {
-            "buy": [
-              "（你的採買清單已收錄於圖片）",
-              "建議優先：藥妝/保養、零食伴手禮、日用品補貨、免稅結帳"
-            ],
-            "tips": [
-              "晚間人潮較多，若要免稅建議預留結帳時間。",
-              "同品項不同樓層/不同陳列可能價差，看到就先拍價標。"
-            ]
-          },
-          "images": [
-            "assets/photos/day1/donki_list.jpg",
-            "assets/photos/day1/donki_1.png",
-            "assets/photos/day1/donki_2.png",
-            "assets/photos/day1/donki_3.png"
-          ],
-          "buyImages": []
+          "links": []
         },
         {
           "time": "22:21",
@@ -421,8 +390,7 @@
             "reviews": [
               "『名古屋名物』代表店系統之一，晚餐尖峰可能需等位。"
             ]
-          },
-          "menuImages": []
+          }
         },
         {
           "time": "23:24",
@@ -444,8 +412,7 @@
           ],
           "highlight": false,
           "detail": "體力夠再去。",
-          "links": [],
-          "menuImages": []
+          "links": []
         }
       ]
     },
@@ -487,8 +454,7 @@
           ],
           "highlight": true,
           "detail": "高山古街散步主軸。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "11:40",
@@ -499,8 +465,7 @@
           ],
           "highlight": false,
           "detail": "若已接近中午可略過。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "13:03",
@@ -527,8 +492,7 @@
             "buy": [
               "如果有真空包/調理包可以留意（依店家供應）。"
             ]
-          },
-          "menuImages": []
+          }
         },
         {
           "time": "15:50",
@@ -539,8 +503,7 @@
           ],
           "highlight": false,
           "detail": "人多/天候差可略過。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "16:47",
@@ -569,8 +532,7 @@
             "reviews": [
               "拍照重點明確就不會被景點塞爆；以『舒服走完』為原則。"
             ]
-          },
-          "spotImages": []
+          }
         },
         {
           "time": "18:00",
@@ -643,8 +605,7 @@
               "多數攻略建議以『區域完成制』逛：一區跑完再換區，會更順也不容易迷路。"
             ]
           },
-          "officialLink": "https://ghibli-park.jp/en/about/valleyofwitches.html",
-          "spotImages": []
+          "officialLink": "https://ghibli-park.jp/en/about/valleyofwitches.html"
         },
         {
           "time": "09:36",
@@ -655,8 +616,7 @@
           ],
           "highlight": true,
           "detail": "熱門排隊點，早點去。",
-          "links": [],
-          "menuImages": []
+          "links": []
         },
         {
           "time": "09:38",
@@ -690,8 +650,7 @@
             "reviews": [
               "官方介紹為魔女之谷的綜合型商店，原創商品種類多、陳列也很用心。"
             ]
-          },
-          "buyImages": []
+          }
         },
         {
           "time": "10:11",
@@ -702,8 +661,7 @@
           ],
           "highlight": true,
           "detail": "注意動線與排隊。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "10:40",
@@ -714,8 +672,7 @@
           ],
           "highlight": true,
           "detail": "與魔女之谷同區可一口氣跑完。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "11:39",
@@ -726,8 +683,7 @@
           ],
           "highlight": true,
           "detail": "建議留拍照時間。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "12:38",
@@ -738,8 +694,7 @@
           ],
           "highlight": true,
           "detail": "注意入場規則/時間。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "14:13",
@@ -750,8 +705,7 @@
           ],
           "highlight": true,
           "detail": "建議預留最多時間的主館。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "16:34",
@@ -762,8 +716,7 @@
           ],
           "highlight": true,
           "detail": "最後補貨點。",
-          "links": [],
-          "buyImages": []
+          "links": []
         },
         {
           "time": "17:39",
@@ -774,8 +727,7 @@
           ],
           "highlight": false,
           "detail": "回市區放慢步調。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "18:55",
@@ -816,8 +768,7 @@
               "想帶『名古屋鰻魚』記憶：可留意店內是否有外帶/伴手禮（依現場供應）。"
             ]
           },
-          "officialLink": "https://www.houraiken.com/matsuzakaya/index.html",
-          "menuImages": []
+          "officialLink": "https://www.houraiken.com/matsuzakaya/index.html"
         },
         {
           "time": "20:08",
@@ -859,8 +810,7 @@
           ],
           "highlight": false,
           "detail": "早餐/咖啡。",
-          "links": [],
-          "menuImages": []
+          "links": []
         },
         {
           "time": "09:52",
@@ -876,8 +826,7 @@
               "label": "名古屋城（官方）",
               "url": "https://www.nagoyajo.city.nagoya.jp/"
             }
-          ],
-          "spotImages": []
+          ]
         },
         {
           "time": "11:30",
@@ -888,8 +837,7 @@
           ],
           "highlight": false,
           "detail": "快速補給。",
-          "links": [],
-          "menuImages": []
+          "links": []
         },
         {
           "time": "12:01",
@@ -930,8 +878,7 @@
               "若你喜歡味噌風味：可留意店內是否有『外帶便當/周邊』選項（依分店供應）。"
             ]
           },
-          "officialLink": "https://www.yabaton.com/",
-          "menuImages": []
+          "officialLink": "https://www.yabaton.com/"
         },
         {
           "time": "13:32",
@@ -947,8 +894,7 @@
               "label": "熱田神宮（官方）",
               "url": "https://www.atsutajingu.or.jp/jingu/"
             }
-          ],
-          "spotImages": []
+          ]
         },
         {
           "time": "15:17",
@@ -959,8 +905,7 @@
           ],
           "highlight": false,
           "detail": "蝦餅採買。",
-          "links": [],
-          "buyImages": []
+          "links": []
         },
         {
           "time": "16:05",
@@ -1022,8 +967,7 @@
               "label": "Kirby Cafe（官方）",
               "url": "https://kirbycafe.jp/"
             }
-          ],
-          "menuImages": []
+          ]
         },
         {
           "time": "20:03",
@@ -1034,8 +978,7 @@
           ],
           "highlight": false,
           "detail": "車站內吃完直接回飯店最省力。",
-          "links": [],
-          "menuImages": []
+          "links": []
         },
         {
           "time": "21:19",
@@ -1062,8 +1005,7 @@
           ],
           "highlight": false,
           "detail": "補買飲料/零食。",
-          "links": [],
-          "buyImages": []
+          "links": []
         },
         {
           "time": "22:24",
@@ -1074,8 +1016,7 @@
           ],
           "highlight": false,
           "detail": "更近的補貨點。",
-          "links": [],
-          "buyImages": []
+          "links": []
         }
       ]
     },
@@ -1106,8 +1047,7 @@
           ],
           "highlight": false,
           "detail": "早餐/咖啡。",
-          "links": [],
-          "menuImages": []
+          "links": []
         },
         {
           "time": "10:42",
@@ -1124,8 +1064,7 @@
               "label": "吉卜力美術館（官方）",
               "url": "https://www.ghibli-museum.jp/en/"
             }
-          ],
-          "spotImages": []
+          ]
         },
         {
           "time": "12:13",
@@ -1136,8 +1075,7 @@
           ],
           "highlight": false,
           "detail": "購物/散步。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "13:33",
@@ -1160,8 +1098,7 @@
               "多數人會把它當作『補能量的一餐』，適合逛街/移動日。"
             ],
             "buy": []
-          },
-          "menuImages": []
+          }
         },
         {
           "time": "14:50",
@@ -1172,8 +1109,7 @@
           ],
           "highlight": false,
           "detail": "逛街點。",
-          "links": [],
-          "buyImages": []
+          "links": []
         },
         {
           "time": "17:51",
@@ -1234,8 +1170,7 @@
             "reviews": [
               "走路量大：鞋要好走；中午安排 30 分鐘『坐著吃』能救體力。"
             ]
-          },
-          "spotImages": []
+          }
         },
         {
           "time": "22:01",
@@ -1290,8 +1225,7 @@
               "常被當作『好吃又好拍』的早午餐選擇。"
             ],
             "buy": []
-          },
-          "menuImages": []
+          }
         },
         {
           "time": "10:46",
@@ -1320,8 +1254,7 @@
             "buy": [
               "若不想久等：可改外帶甜點（依店鋪供應）。"
             ]
-          },
-          "menuImages": []
+          }
         },
         {
           "time": "11:50",
@@ -1351,8 +1284,7 @@
             "buy": [
               "禮盒/組合最適合當伴手禮；自用可買單顆（依現場品項）。"
             ]
-          },
-          "menuImages": []
+          }
         },
         {
           "time": "12:38",
@@ -1375,8 +1307,7 @@
             "reviews": [
               "甜度清爽，適合當『路上補能』。"
             ]
-          },
-          "menuImages": []
+          }
         },
         {
           "time": "13:08",
@@ -1406,8 +1337,7 @@
             "buy": [
               "若店內有乾麵/禮盒可作伴手禮（依現場供應）。"
             ]
-          },
-          "menuImages": []
+          }
         },
         {
           "time": "14:13",
@@ -1418,8 +1348,7 @@
           ],
           "highlight": false,
           "detail": "購物/散步。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "15:30",
@@ -1448,8 +1377,7 @@
             "buy": [
               "若看到限定豆或濾掛/周邊可順手帶（依現場供應）。"
             ]
-          },
-          "menuImages": []
+          }
         },
         {
           "time": "17:05",
@@ -1460,8 +1388,7 @@
           ],
           "highlight": false,
           "detail": "傍晚人潮仍多。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "18:57",
@@ -1472,8 +1399,7 @@
           ],
           "highlight": false,
           "detail": "晚段採買。",
-          "links": [],
-          "buyImages": []
+          "links": []
         },
         {
           "time": "20:26",
@@ -1528,8 +1454,7 @@
               "評價通常集中在『口味清爽、分量剛好、節奏很快』。"
             ],
             "buy": []
-          },
-          "menuImages": []
+          }
         },
         {
           "time": "11:32",
@@ -1545,8 +1470,7 @@
               "label": "川越氷川神社（官方）",
               "url": "https://www.kawagoehikawa.jp/"
             }
-          ],
-          "spotImages": []
+          ]
         },
         {
           "time": "14:06",
@@ -1557,8 +1481,7 @@
           ],
           "highlight": true,
           "detail": "可當下午茶重點。",
-          "links": [],
-          "menuImages": []
+          "links": []
         },
         {
           "time": "14:39",
@@ -1570,8 +1493,7 @@
           ],
           "highlight": true,
           "detail": "代表地標，務必拍照。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "15:12",
@@ -1582,8 +1504,7 @@
           ],
           "highlight": true,
           "detail": "主要散步購物路線。",
-          "links": [],
-          "spotImages": []
+          "links": []
         },
         {
           "time": "15:38",
@@ -1608,8 +1529,7 @@
               "多數評價提到：醬香明顯、份量扎實，很有『小江戶川越』代表性。"
             ],
             "buy": []
-          },
-          "menuImages": []
+          }
         },
         {
           "time": "20:27",
@@ -1635,18 +1555,5 @@
         }
       ]
     }
-  ],
-  "images": {
-    "version": "2025-12-15",
-    "cover": "assets/photos/cover.jpg",
-    "directory": {
-      "nagoya": "assets/photos/directory_nagoya.jpg",
-      "tokyo": "assets/photos/directory_tokyo.jpg"
-    },
-    "fallback": "assets/photos/fallback.jpg"
-  },
-  "catalog": {
-    "title": "名古屋 → 東京 8日行程",
-    "subtitle": "2025-12-20 — 2025-12-27"
-  }
+  ]
 }
